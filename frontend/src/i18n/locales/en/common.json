@@ -1,0 +1,64 @@
+{
+  "app": {
+    "name": "Gamervox",
+    "tagline": "The voice of gamers for IPs that deserve to come back"
+  },
+  "nav": {
+    "home": "Home",
+    "search_placeholder": "Search by title or tag...",
+    "submit_game": "Submit a game",
+    "my_games": "My submissions",
+    "profile": "Profile",
+    "login": "Log in",
+    "logout": "Log out"
+  },
+  "profile": {
+    "title": "Profile",
+    "tab_data": "Details",
+    "name_label": "Name",
+    "save": "Save changes",
+    "saved": "Profile updated."
+  },
+  "vote": {
+    "yes": "Yes",
+    "no": "No",
+    "net_score": "Score"
+  },
+  "status": {
+    "pending": "Under review",
+    "approved": "Approved",
+    "rejected": "Rejected"
+  },
+  "auth": {
+    "signing_in": "Signing in...",
+    "social_login_failed": "We couldn't sign you in with that account. Please try again.",
+    "continue_with_google": "Continue with Google",
+    "continue_with_discord": "Continue with Discord",
+    "continue_with_steam": "Continue with Steam",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "password_confirmation": "Confirm password",
+    "register": "Sign up",
+    "have_account": "Already have an account? Log in",
+    "no_account": "Don't have an account? Sign up"
+  },
+  "game": {
+    "title": "Game title",
+    "description": "Description",
+    "tags_placeholder": "Comma-separated tags (optional)",
+    "similar_warning": "A similar game is already registered. Are you sure you want to continue?",
+    "confirm_duplicate": "Submit anyway",
+    "social_links": "Social links of the IP owner",
+    "loading": "Loading...",
+    "empty": "No games found.",
+    "by": "Submitted by"
+  },
+  "comments": {
+    "title": "Comments",
+    "placeholder": "Leave a comment...",
+    "submit": "Comment",
+    "empty": "No comments yet. Be the first!",
+    "error": "We couldn't post your comment. Please try again."
+  }
+}

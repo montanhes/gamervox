@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-22T18-30-00.000Z",
+  "title": "Design System: Gamervox",
+  "extensions": {
+    "colorMeta": {
+      "ambar": { "role": "primary", "displayName": "Âmbar", "canonical": "oklch(73% 0.13 65)", "tonalRamp": ["#3a2a10", "#5c421a", "#876024", "#b67e2e", "#e3a23c", "#ecbd72", "#f3d6a3", "#f9ead0"] },
+      "verde-sim": { "role": "secondary", "displayName": "Verde-Sim", "canonical": "oklch(75% 0.16 155)", "tonalRamp": ["#0c2c1d", "#16482e", "#216a41", "#2c9259", "#3dd68c", "#74e3ac", "#a8edc9", "#d6f7e4"] },
+      "vermelho-nao": { "role": "tertiary", "displayName": "Vermelho-Não", "canonical": "oklch(66% 0.19 18)", "tonalRamp": ["#3a0f12", "#5e171b", "#8c2127", "#bc3038", "#f2545b", "#f68086", "#fab1b4", "#fdd9da"] },
+      "grafite": { "role": "neutral", "displayName": "Grafite", "canonical": "oklch(15% 0.01 260)", "tonalRamp": ["#08090b", "#14151a", "#1c1d24", "#26272f", "#34353f", "#494a57", "#65667a", "#8c8da3"] },
+      "superficie": { "role": "neutral", "displayName": "Superfície", "canonical": "oklch(19% 0.012 260)", "tonalRamp": ["#0a0b0d", "#16171d", "#1c1d24", "#272830", "#36373f", "#4b4c56", "#67687a", "#8e8fa3"] },
+      "texto-claro": { "role": "neutral", "displayName": "Texto Claro", "canonical": "oklch(96% 0.002 100)", "tonalRamp": ["#3c3c3a", "#56564f", "#76766b", "#969688", "#bdbdaa", "#dadac9", "#f2f2f0", "#fbfbf8"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Título de página: login, cadastro, nome do jogo na página de detalhe." },
+      "title": { "displayName": "Title", "purpose": "Título de jogo no card do feed, nome de usuário." },
+      "body": { "displayName": "Body", "purpose": "Descrição, comentários. Máximo 70ch." },
+      "label": { "displayName": "Label", "purpose": "Badges de status, contadores, metadados." }
+    },
+    "shadows": [
+      { "name": "card-hover", "value": "0 8px 24px rgba(0,0,0,0.35)", "purpose": "Elevação leve no hover de card de jogo, combinada com translateY(-4px)." }
+    ],
+    "motion": [
+      { "name": "card-lift", "value": "transform 200ms cubic-bezier(0.16,1,0.3,1), box-shadow 200ms ease-out, border-color 200ms ease-out", "purpose": "Hover de card: leve elevação + sombra + borda mais visível." },
+      { "name": "press-feedback", "value": "transform 150ms ease-out", "purpose": "scale(0.97) no :active de botões de voto e CTAs." },
+      { "name": "cover-zoom", "value": "transform 250ms ease-out", "purpose": "scale(1.03) na capa do jogo dentro do card, contido com overflow:hidden." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação primária (submit, login). Contraste invertido: fundo âmbar, texto grafite.",
+      "html": "<button class=\"ds-btn-primary\">Cadastrar jogo</button>",
+      "css": ".ds-btn-primary { background: #e3a23c; color: #14151a; font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 0.9375rem; padding: 10px 18px; border: none; border-radius: 6px; cursor: pointer; transition: background 150ms ease-out; } .ds-btn-primary:hover { background: #cf8f30; } .ds-btn-primary:focus-visible { outline: 2px solid #e3a23c; outline-offset: 2px; } .ds-btn-primary:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Vote Button - Sim",
+      "kind": "button",
+      "refersTo": "vote-yes",
+      "description": "Botão de voto Sim. Sem rotação; feedback é scale no clique.",
+      "html": "<button class=\"ds-vote ds-vote-yes\">Sim (12)</button>",
+      "css": ".ds-vote { font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; padding: 8px 16px; border-radius: 6px; background: #1c1d24; cursor: pointer; transition: transform 150ms ease-out, background 150ms ease-out; } .ds-vote-yes { border: 1px solid #3dd68c; color: #3dd68c; } .ds-vote-yes:active { transform: scale(0.97); } .ds-vote:focus-visible { outline: 2px solid #e3a23c; outline-offset: 2px; } @media (prefers-reduced-motion: reduce) { .ds-vote { transition: background 80ms linear; } .ds-vote:active { transform: none; } }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "custom",
+      "refersTo": "vote-no",
+      "description": "Badge de status de moderação. Pill discreto, sem rotação, não interativo.",
+      "html": "<span class=\"ds-badge ds-badge-rejected\">Rejeitado</span>",
+      "css": ".ds-badge { display: inline-block; font-family: Inter, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 4px 10px; border-radius: 6px; background: #1c1d24; } .ds-badge-rejected { border: 1px solid #f2545b; color: #f2545b; } .ds-badge-approved { border: 1px solid #3dd68c; color: #3dd68c; } .ds-badge-pending { border: 1px solid rgba(242,242,240,0.3); color: rgba(242,242,240,0.6); }"
+    },
+    {
+      "name": "Game Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Card de jogo no feed. Borda quase invisível em repouso; hover eleva com sombra e zoom na capa.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-cover\"><img src=\"cover.jpg\" alt=\"\" /></div><h2 class=\"ds-card-title\">Breath of Fire</h2></article>",
+      "css": ".ds-card { background: #1c1d24; color: #f2f2f0; border: 1px solid rgba(242,242,240,0.08); border-radius: 10px; padding: 16px; transition: transform 200ms cubic-bezier(0.16,1,0.3,1), box-shadow 200ms ease-out, border-color 200ms ease-out; } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); border-color: rgba(242,242,240,0.18); } .ds-card-cover { border-radius: 6px; overflow: hidden; margin-bottom: 12px; } .ds-card-cover img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: transform 250ms ease-out; } .ds-card:hover .ds-card-cover img { transform: scale(1.03); } .ds-card-title { font-family: Inter, system-ui, sans-serif; font-weight: 600; font-size: 1.125rem; margin: 0; } @media (prefers-reduced-motion: reduce) { .ds-card, .ds-card-cover img { transition: none; } .ds-card:hover { transform: none; } .ds-card:hover .ds-card-cover img { transform: none; } }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulário. Borda 1px sutil, foco em âmbar.",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"seu@email.com\" />",
+      "css": ".ds-input { background: #14151a; color: #f2f2f0; border: 1px solid rgba(242,242,240,0.2); border-radius: 6px; padding: 10px 12px; font-family: Inter, system-ui, sans-serif; font-size: 1rem; transition: border-color 150ms ease-out; } .ds-input::placeholder { color: rgba(242,242,240,0.5); } .ds-input:focus-visible { outline: none; border-color: #e3a23c; } .ds-input[data-error='true'] { border-color: #f2545b; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Vitrine Silenciosa",
+    "overview": "A primeira tentativa de redesign (carimbo/cartucho: bordas grossas, rotação, blocos sólidos) foi implementada, testada e rejeitada pelo usuário (\"ficou uma bosta total\", \"botões tortos que não tem nada a ver\", \"cantos totalmente quadrados\"). Essa versão corrige o rumo a partir de 4 referências reais: PlayerVox, Epic Games Store, PlayStation Store, Instant Gaming. O padrão comum: a UI em si quase não tem ornamento. Quem carrega cor é a capa do jogo; a interface ao redor fica neutra, com bordas finas (1px) ou nenhuma, cantos pequenos e consistentes, uma única cor de destaque usada com moderação, e tipografia única e limpa.",
+    "keyCharacteristics": [
+      "Fundo grafite neutro (#14151a), nunca preto puro nem tom quente.",
+      "Bordas finas (1px, baixa opacidade) como padrão; nada de blocos grossos ou rotação.",
+      "Cantos pequenos e consistentes: 6px controles, 10px cards — nunca 0, nunca pílula.",
+      "Um acento de marca (âmbar) + dois acentos semânticos fixos (verde/vermelho).",
+      "Motion restrito a feedback de interação, rápido (150-250ms), nunca coreografado."
+    ],
+    "rules": [
+      { "name": "The Content-Leads-Color Rule", "body": "A capa do jogo é a maior fonte de cor da tela. A UI ao redor fica neutra de propósito.", "section": "colors" },
+      { "name": "The Quiet-by-Default Rule", "body": "Nenhum elemento tem sombra em repouso. Sombra só existe como feedback de hover/foco.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do usar borda 1px (hairline) como padrão; reservar 2px só pra foco/ênfase pontual.",
+      "Do manter cantos pequenos e consistentes (6px controles, 10px cards).",
+      "Do deixar a capa do jogo carregar a cor da tela.",
+      "Do usar motion só como feedback (hover lift, zoom de capa, transição de cor)."
+    ],
+    "donts": [
+      "Don't usar bordas grossas (2px+) como padrão de superfície, nem rotação decorativa.",
+      "Don't usar mais de uma família tipográfica de exibição.",
+      "Don't voltar à paleta shadcn genérica.",
+      "Don't aplicar sombra em repouso."
+    ]
+  }
+}

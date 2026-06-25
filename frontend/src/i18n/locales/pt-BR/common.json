@@ -1,0 +1,64 @@
+{
+  "app": {
+    "name": "Gamervox",
+    "tagline": "A voz dos gamers pelas IPs que merecem voltar"
+  },
+  "nav": {
+    "home": "Início",
+    "search_placeholder": "Buscar por título ou tag...",
+    "submit_game": "Cadastrar jogo",
+    "my_games": "Minhas publicações",
+    "profile": "Perfil",
+    "login": "Entrar",
+    "logout": "Sair"
+  },
+  "profile": {
+    "title": "Perfil",
+    "tab_data": "Dados",
+    "name_label": "Nome",
+    "save": "Salvar alterações",
+    "saved": "Perfil atualizado."
+  },
+  "vote": {
+    "yes": "Sim",
+    "no": "Não",
+    "net_score": "Saldo"
+  },
+  "status": {
+    "pending": "Em análise",
+    "approved": "Aprovado",
+    "rejected": "Rejeitado"
+  },
+  "auth": {
+    "signing_in": "Entrando...",
+    "social_login_failed": "Não foi possível entrar com essa conta. Tente novamente.",
+    "continue_with_google": "Continuar com Google",
+    "continue_with_discord": "Continuar com Discord",
+    "continue_with_steam": "Continuar com Steam",
+    "name": "Nome",
+    "email": "E-mail",
+    "password": "Senha",
+    "password_confirmation": "Confirme a senha",
+    "register": "Cadastrar",
+    "have_account": "Já tem conta? Entrar",
+    "no_account": "Não tem conta? Cadastre-se"
+  },
+  "game": {
+    "title": "Título do jogo",
+    "description": "Descrição",
+    "tags_placeholder": "Tags separadas por vírgula (opcional)",
+    "similar_warning": "Já existe um jogo parecido cadastrado. Tem certeza que quer continuar?",
+    "confirm_duplicate": "Cadastrar mesmo assim",
+    "social_links": "Redes sociais da empresa dona da IP",
+    "loading": "Carregando...",
+    "empty": "Nenhum jogo encontrado.",
+    "by": "Cadastrado por"
+  },
+  "comments": {
+    "title": "Comentários",
+    "placeholder": "Deixe seu comentário...",
+    "submit": "Comentar",
+    "empty": "Nenhum comentário ainda. Seja o primeiro!",
+    "error": "Não foi possível enviar seu comentário. Tente novamente."
+  }
+}

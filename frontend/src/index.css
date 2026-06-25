@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0e11;
+  --surface: #161b22;
+  --foreground: #f0f6fc;
+  --muted: #161b22;
+  --muted-foreground: #8b949e;
+  --border: #30363d80;
+  --border-strong: #30363d;
+  --primary: #9d4edd;
+  --primary-hover: #b06ee6;
+  --primary-foreground: #0b0e11;
+  --destructive: #ffd60a;
+  --destructive-hover: #e6c009;
+  --destructive-foreground: #0b0e11;
+  --success: #9d4edd;
+  --success-foreground: #0b0e11;
+
+  --font-body: Inter, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --font-body: var(--font-body);
+  --radius-control: 6px;
+  --radius-surface: 10px;
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
