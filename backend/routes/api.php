@@ -16,6 +16,7 @@ Route::middleware('throttle:5,1')->group(function () {
 Route::get('/games', [GameController::class, 'index']);
 Route::get('/games/{slug}', [GameController::class, 'show']);
 Route::get('/games/{slug}/comments', [CommentController::class, 'index']);
+Route::get('/games/{slug}/comments/{comment}/replies', [CommentController::class, 'replies']);
 Route::get('/tags', [TagController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function () {

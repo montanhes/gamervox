@@ -18,6 +18,8 @@ class CommentResource extends JsonResource
             'id' => $this->id,
             'body' => $this->body,
             'created_at' => $this->created_at,
+            'parent_id' => $this->parent_id,
+            'replies_count' => $this->replies_count ?? 0,
             'user' => new UserResource($this->whenLoaded('user')),
         ];
     }

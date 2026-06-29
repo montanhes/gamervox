@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\GameStatus;
 use Database\Factories\GameFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +21,7 @@ class Game extends Model
      * @var array<string, mixed>
      */
     protected $attributes = [
-        'status' => 'pending',
+        'status' => 0,
         'yes_votes_count' => 0,
         'no_votes_count' => 0,
         'net_score' => 0,
@@ -30,6 +31,7 @@ class Game extends Model
     protected function casts(): array
     {
         return [
+            'status' => GameStatus::class,
             'yes_votes_count' => 'integer',
             'no_votes_count' => 'integer',
             'net_score' => 'integer',

@@ -1,0 +1,20 @@
+{
+  "_comment": "Border and radius tokens. CSS custom properties: --radius-control and --radius-surface defined in index.css.",
+
+  "radius": {
+    "control": { "$type": "dimension", "$value": "6px",    "_tailwind": "rounded-control" },
+    "surface": { "$type": "dimension", "$value": "10px",   "_tailwind": "rounded-surface" },
+    "lg":      { "$type": "dimension", "$value": "8px",    "_tailwind": "rounded-lg" },
+    "xl":      { "$type": "dimension", "$value": "12px",   "_tailwind": "rounded-xl" },
+    "full":    { "$type": "dimension", "$value": "9999px", "_tailwind": "rounded-full" }
+  },
+
+  "usage": {
+    "inputs":        "rounded-control (6px)",
+    "buttons":       "rounded-control (6px) for inline buttons; rounded-lg (8px) for CTA",
+    "cards":         "rounded-surface (10px)",
+    "search":        "rounded-xl (12px)",
+    "tags-badges":   "rounded-lg (8px)",
+    "avatars":       "rounded-full"
+  }
+}

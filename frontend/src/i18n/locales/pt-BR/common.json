@@ -3,6 +3,12 @@
     "name": "Gamervox",
     "tagline": "A voz dos gamers pelas IPs que merecem voltar"
   },
+  "home": {
+    "subtitle": "Cadastre jogos clássicos sem remake e vote pelo retorno das IPs que você ama. O ranking é feito pelo saldo de votos da comunidade.",
+    "cta_prompt": "Tem um jogo que merece voltar?",
+    "cta_submit": "Cadastrar agora",
+    "cta_login": "Entrar para votar"
+  },
   "nav": {
     "home": "Início",
     "search_placeholder": "Buscar por título ou tag...",
@@ -16,6 +22,7 @@
     "title": "Perfil",
     "tab_data": "Dados",
     "name_label": "Nome",
+    "language_label": "Idioma do site",
     "save": "Salvar alterações",
     "saved": "Perfil atualizado."
   },
@@ -52,12 +59,24 @@
     "social_links": "Redes sociais da empresa dona da IP",
     "loading": "Carregando...",
     "empty": "Nenhum jogo encontrado.",
-    "by": "Cadastrado por"
+    "by": "Cadastrado por",
+    "read_more": "Ler mais",
+    "read_less": "Ler menos",
+    "share": "Copiar link",
+    "share_copied": "Link copiado"
   },
   "comments": {
     "title": "Comentários",
     "placeholder": "Deixe seu comentário...",
+    "reply_placeholder": "Escreva uma resposta...",
     "submit": "Comentar",
+    "reply_submit": "Responder",
+    "reply": "Responder",
+    "show_replies_one": "1 resposta",
+    "show_replies_other": "{{count}} respostas",
+    "hide_replies": "Ocultar respostas",
+    "load_more": "Carregar mais comentários",
+    "load_more_replies": "Carregar mais respostas",
     "empty": "Nenhum comentário ainda. Seja o primeiro!",
     "error": "Não foi possível enviar seu comentário. Tente novamente."
   }

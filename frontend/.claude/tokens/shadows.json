@@ -1,0 +1,16 @@
+{
+  "_comment": "Shadow tokens. Defined as CSS custom property --shadow-card-hover in index.css.",
+
+  "card-hover": {
+    "$type": "shadow",
+    "$value": {
+      "offsetX": "0",
+      "offsetY": "12px",
+      "blur":    "24px",
+      "spread":  "0",
+      "color":   "rgba(0, 0, 0, 0.45)"
+    },
+    "_tailwind": "shadow-card-hover",
+    "_use": "GameCard on hover — deep drop shadow for depth on dark backgrounds"
+  }
+}

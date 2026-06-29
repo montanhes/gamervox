@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\GameStatus;
 use App\Jobs\ModerateGameJob;
 use App\Models\Game;
 use App\Models\Tag;
@@ -30,7 +31,7 @@ class GameService
                 'title' => $data['title'],
                 'slug' => $slug,
                 'description' => $data['description'],
-                'status' => 'pending',
+                'status' => GameStatus::Pending,
             ]);
 
             $game->image_path = $this->imageUploadService->storeGameCover($image, $slug);
@@ -60,7 +61,7 @@ class GameService
         $slug = Str::slug($title);
 
         return Game::query()
-            ->where('status', 'approved')
+            ->where('status', GameStatus::Approved)
             ->where(function ($query) use ($slug, $title) {
                 $query->where('slug', 'like', "{$slug}%")
                     ->orWhere('title', 'like', "%{$title}%");

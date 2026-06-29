@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\GameStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Resources\CommentResource;
+use App\Models\Comment;
 use App\Models\Game;
-use App\Services\Moderation\ModerationServiceException;
-use App\Services\Moderation\ModerationServiceInterface;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Validation\ValidationException;
 
@@ -15,48 +15,55 @@ class CommentController extends Controller
 {
     public function index(string $slug): AnonymousResourceCollection
     {
-        $game = Game::where('slug', $slug)->where('status', 'approved')->firstOrFail();
+        $game = Game::where('slug', $slug)->where('status', GameStatus::Approved)->firstOrFail();
 
         $comments = $game->comments()
+            ->whereNull('parent_id')
+            ->withCount('replies')
             ->with('user')
             ->orderByDesc('created_at')
-            ->paginate(20);
+            ->cursorPaginate(20);
 
         return CommentResource::collection($comments);
     }
 
-    public function store(
-        StoreCommentRequest $request,
-        string $slug,
-        ModerationServiceInterface $moderationService,
-    ): CommentResource {
-        $game = Game::where('slug', $slug)->where('status', 'approved')->firstOrFail();
+    public function replies(string $slug, Comment $comment): AnonymousResourceCollection
+    {
+        $game = Game::where('slug', $slug)->where('status', GameStatus::Approved)->firstOrFail();
 
-        $body = $request->validated('body');
+        abort_if($comment->game_id !== $game->id, 404);
 
-        try {
-            $result = $moderationService->moderateText($body);
-        } catch (ModerationServiceException) {
-            if (config('moderation.comment_fallback') === 'approve') {
-                $result = null;
-            } else {
+        $replies = $comment->replies()
+            ->withCount('replies')
+            ->with('user')
+            ->orderBy('created_at')
+            ->cursorPaginate(10);
+
+        return CommentResource::collection($replies);
+    }
+
+    public function store(StoreCommentRequest $request, string $slug): CommentResource
+    {
+        $game = Game::where('slug', $slug)->where('status', GameStatus::Approved)->firstOrFail();
+
+        $parentId = $request->validated('parent_id');
+
+        if ($parentId !== null) {
+            $parentExists = Comment::where('id', $parentId)->where('game_id', $game->id)->exists();
+
+            if (! $parentExists) {
                 throw ValidationException::withMessages([
-                    'body' => [trans('moderation.comment_unavailable')],
+                    'parent_id' => ['Comentário pai não encontrado para este jogo.'],
                 ]);
             }
         }
 
-        if ($result && ! $result->approved) {
-            throw ValidationException::withMessages([
-                'body' => [$result->reason],
-            ]);
-        }
-
         $comment = $game->comments()->create([
             'user_id' => $request->user()->id,
-            'body' => $body,
+            'body' => $request->validated('body'),
+            'parent_id' => $parentId,
         ]);
 
-        return new CommentResource($comment->load('user'));
+        return new CommentResource($comment->load('user')->loadCount('replies'));
     }
 }

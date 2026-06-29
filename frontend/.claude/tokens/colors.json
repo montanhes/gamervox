@@ -1,0 +1,37 @@
+{
+  "_comment": "Source of truth: src/index.css :root variables. DTCG format.",
+
+  "primitive": {
+    "purple": {
+      "600": { "$type": "color", "$value": "#9d4edd" },
+      "400": { "$type": "color", "$value": "#b06ee6" }
+    },
+    "yellow": {
+      "400": { "$type": "color", "$value": "#ffd60a" },
+      "500": { "$type": "color", "$value": "#e6c009" }
+    },
+    "slate": {
+      "50":  { "$type": "color", "$value": "#f0f6fc" },
+      "400": { "$type": "color", "$value": "#8b949e" },
+      "700": { "$type": "color", "$value": "#30363d" },
+      "800": { "$type": "color", "$value": "#161b22" },
+      "950": { "$type": "color", "$value": "#0b0e11" }
+    }
+  },
+
+  "semantic": {
+    "background":             { "$type": "color", "$value": "{primitive.slate.950}" },
+    "surface":                { "$type": "color", "$value": "{primitive.slate.800}" },
+    "foreground":             { "$type": "color", "$value": "{primitive.slate.50}" },
+    "muted-foreground":       { "$type": "color", "$value": "{primitive.slate.400}" },
+    "border":                 { "$type": "color", "$value": "#30363d80", "_note": "semi-transparent, decorative only — 1.2:1, NOT for structural borders" },
+    "border-strong":          { "$type": "color", "$value": "{primitive.slate.700}", "_note": "structural — inputs, cards. ~3:1 on surface." },
+    "primary":                { "$type": "color", "$value": "{primitive.purple.600}" },
+    "primary-hover":          { "$type": "color", "$value": "{primitive.purple.400}" },
+    "primary-foreground":     { "$type": "color", "$value": "{primitive.slate.950}", "_note": "WARNING: #9d4edd on #0b0e11 = 6.1:1 pass. But white (#fff) on primary = 4.6:1 also passes and reads better — consider switching." },
+    "destructive":            { "$type": "color", "$value": "{primitive.yellow.400}", "_note": "Yellow used as 'No' vote / danger — non-standard. On surface (#161b22) = 14.8:1. On background = 16.5:1." },
+    "destructive-hover":      { "$type": "color", "$value": "{primitive.yellow.500}" },
+    "destructive-foreground": { "$type": "color", "$value": "{primitive.slate.950}" },
+    "success":                { "$type": "color", "$value": "{primitive.purple.600}", "_note": "Same as primary — intentional for now, may diverge later." }
+  }
+}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\GameStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Resources\GameDetailResource;
@@ -22,7 +23,7 @@ class GameController extends Controller
     public function index(Request $request): AnonymousResourceCollection
     {
         $games = Game::query()
-            ->where('status', 'approved')
+            ->where('status', GameStatus::Approved)
             ->with('tags')
             ->when($request->string('search')->trim()->isNotEmpty(), function ($query) use ($request) {
                 $query->whereFullText(['title', 'description'], $request->string('search')->toString());
@@ -60,7 +61,7 @@ class GameController extends Controller
     {
         $game = Game::where('slug', $slug)->with(['tags', 'socialLinks', 'user'])->firstOrFail();
 
-        if ($game->status !== 'approved' && $game->user_id !== $request->user()?->id) {
+        if ($game->status !== GameStatus::Approved && $game->user_id !== $request->user()?->id) {
             throw new NotFoundHttpException;
         }
 

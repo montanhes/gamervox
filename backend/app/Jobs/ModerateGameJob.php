@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Enums\GameStatus;
 use App\Models\Game;
 use App\Services\Moderation\ModerationServiceInterface;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -34,7 +35,7 @@ class ModerateGameJob implements ShouldQueue
         $result = $moderationService->moderateGame($this->game);
 
         $this->game->update([
-            'status' => $result->approved ? 'approved' : 'rejected',
+            'status' => $result->approved ? GameStatus::Approved : GameStatus::Rejected,
             'moderation_reason' => $result->reason,
         ]);
     }

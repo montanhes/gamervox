@@ -1,0 +1,34 @@
+{
+  "_comment": "Typography tokens for Gamervox. Single font family: Inter.",
+
+  "font": {
+    "body": { "$type": "fontFamily", "$value": ["Inter", "system-ui", "sans-serif"] }
+  },
+
+  "fontSize": {
+    "xs":   { "$type": "dimension", "$value": "12px" },
+    "sm":   { "$type": "dimension", "$value": "14px" },
+    "base": { "$type": "dimension", "$value": "16px" },
+    "lg":   { "$type": "dimension", "$value": "18px" },
+    "xl":   { "$type": "dimension", "$value": "20px" },
+    "2xl":  { "$type": "dimension", "$value": "24px" },
+    "3xl":  { "$type": "dimension", "$value": "30px" },
+    "4xl":  { "$type": "dimension", "$value": "36px" }
+  },
+
+  "fontWeight": {
+    "medium":   { "$type": "number", "$value": 500 },
+    "semibold": { "$type": "number", "$value": 600 },
+    "bold":     { "$type": "number", "$value": 700 }
+  },
+
+  "textStyle": {
+    "page-title":    { "$type": "typography", "$value": { "fontSize": "{fontSize.3xl}", "fontWeight": "{fontWeight.bold}", "letterSpacing": "-0.02em" } },
+    "section-title": { "$type": "typography", "$value": { "fontSize": "{fontSize.xl}",  "fontWeight": "{fontWeight.semibold}" } },
+    "card-title":    { "$type": "typography", "$value": { "fontSize": "{fontSize.sm}",  "fontWeight": "{fontWeight.semibold}", "lineHeight": "1.25" } },
+    "body":          { "$type": "typography", "$value": { "fontSize": "{fontSize.base}", "fontWeight": "{fontWeight.medium}", "lineHeight": "1.5" } },
+    "body-sm":       { "$type": "typography", "$value": { "fontSize": "{fontSize.sm}",  "fontWeight": "{fontWeight.medium}", "lineHeight": "1.5" } },
+    "caption":       { "$type": "typography", "$value": { "fontSize": "{fontSize.xs}",  "fontWeight": "{fontWeight.medium}" } },
+    "label":         { "$type": "typography", "$value": { "fontSize": "{fontSize.sm}",  "fontWeight": "{fontWeight.semibold}" } }
+  }
+}

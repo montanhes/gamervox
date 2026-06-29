@@ -5,6 +5,27 @@ import { useAuth } from '@/hooks/useAuth'
 import { MyGamesList } from '@/components/MyGamesList'
 import type { User } from '@/api/auth'
 
+function LanguageSelect() {
+  const { t, i18n } = useTranslation()
+
+  return (
+    <div className="space-y-1.5">
+      <label htmlFor="language" className="text-sm font-medium">
+        {t('profile.language_label')}
+      </label>
+      <select
+        id="language"
+        value={i18n.resolvedLanguage ?? i18n.language}
+        onChange={(e) => i18n.changeLanguage(e.target.value)}
+        className="w-full rounded-control border border-border-strong bg-background px-3 py-2 text-sm text-foreground transition-colors focus-visible:border-primary focus-visible:outline-none"
+      >
+        <option value="pt-BR">Português (Brasil)</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  )
+}
+
 function ProfileForm({ user }: { user: User }) {
   const { t } = useTranslation()
   const { updateProfile, isUpdatingProfile } = useAuth()
@@ -42,6 +63,8 @@ function ProfileForm({ user }: { user: User }) {
         )}
         <p className="text-sm text-muted-foreground">{user.email}</p>
       </div>
+
+      <LanguageSelect />
 
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="space-y-1.5">

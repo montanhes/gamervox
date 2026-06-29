@@ -52,6 +52,7 @@ function Header() {
 
 function HomePage() {
   const { t } = useTranslation()
+  const { user } = useAuth()
   const [search, setSearch] = useState('')
   const [searchParams, setSearchParams] = useSearchParams()
   const activeTag = searchParams.get('tag')
@@ -70,9 +71,21 @@ function HomePage() {
   })
 
   const games = data?.pages.flatMap((page) => page.data) ?? []
+  const isFiltering = !!search || !!activeTag
 
   return (
     <div className="mx-auto max-w-7xl space-y-4 p-6">
+      <div className="py-8 text-center">
+        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{t('app.tagline')}</h1>
+        <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">{t('home.subtitle')}</p>
+        <Link
+          to={user ? '/games/new' : '/login'}
+          className="mt-6 inline-block rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-hover"
+        >
+          {user ? t('home.cta_submit') : t('home.cta_login')}
+        </Link>
+      </div>
+
       <SearchBar onSearch={setSearch} />
 
       {activeTag && (
@@ -83,6 +96,18 @@ function HomePage() {
         >
           #{activeTag} ×
         </button>
+      )}
+
+      {!isFiltering && (
+        <div className="flex items-center justify-between rounded-lg border border-border bg-surface px-4 py-3">
+          <p className="text-sm text-muted-foreground">{t('home.cta_prompt')}</p>
+          <Link
+            to={user ? '/games/new' : '/login'}
+            className="text-sm font-medium text-primary transition-colors hover:text-primary-hover"
+          >
+            {t('home.cta_submit')} &rarr;
+          </Link>
+        </div>
       )}
 
       {isLoading && <p className="text-muted-foreground">{t('game.loading')}</p>}

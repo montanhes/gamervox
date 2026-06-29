@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Enums\GameStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ModerateGameRequest;
 use App\Http\Resources\GameDetailResource;
@@ -12,7 +13,7 @@ class GameModerationController extends Controller
     public function update(ModerateGameRequest $request, Game $game): GameDetailResource
     {
         $game->update([
-            'status' => $request->validated('status'),
+            'status' => GameStatus::fromLabel($request->validated('status')),
             'moderation_reason' => $request->validated('reason'),
         ]);
 

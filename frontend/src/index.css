@@ -17,6 +17,8 @@
   --success: #9d4edd;
   --success-foreground: #0b0e11;
 
+  --shadow-card-hover: 0 12px 24px rgb(0 0 0 / 0.45);
+
   --font-body: Inter, system-ui, sans-serif;
 }
 
@@ -39,6 +41,7 @@
   --font-body: var(--font-body);
   --radius-control: 6px;
   --radius-surface: 10px;
+  --shadow-card-hover: var(--shadow-card-hover);
 }
 
 @layer base {

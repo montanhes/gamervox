@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\GameStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CastVoteRequest;
 use App\Models\Game;
@@ -17,7 +18,7 @@ class VoteController extends Controller
 
     public function store(CastVoteRequest $request, string $slug): JsonResponse
     {
-        $game = Game::where('slug', $slug)->where('status', 'approved')->firstOrFail();
+        $game = Game::where('slug', $slug)->where('status', GameStatus::Approved)->firstOrFail();
 
         $this->voteService->castVote($request->user(), $game, $request->integer('value'));
 
@@ -32,7 +33,7 @@ class VoteController extends Controller
 
     public function destroy(Request $request, string $slug): JsonResponse
     {
-        $game = Game::where('slug', $slug)->where('status', 'approved')->firstOrFail();
+        $game = Game::where('slug', $slug)->where('status', GameStatus::Approved)->firstOrFail();
 
         $this->voteService->removeVote($request->user(), $game);
 

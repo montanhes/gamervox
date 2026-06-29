@@ -32,7 +32,7 @@ class GameDetailResource extends JsonResource
                 'url' => $link->url,
             ])),
             'user' => new UserResource($this->whenLoaded('user')),
-            'status' => $this->when($canSeeStatus, $this->status),
+            'status' => $this->when($canSeeStatus, $this->status?->label()),
             'moderation_reason' => $this->when($canSeeStatus, $this->moderation_reason),
         ];
     }

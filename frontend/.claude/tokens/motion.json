@@ -1,0 +1,45 @@
+{
+  "_comment": "Motion tokens. All transitions respect prefers-reduced-motion via Tailwind motion-reduce: variant.",
+
+  "duration": {
+    "fast": { "$type": "duration", "$value": "150ms", "_use": "button state changes (bg, scale)" },
+    "base": { "$type": "duration", "$value": "300ms", "_use": "card hover (translate, border, shadow), image scale" },
+    "slow": { "$type": "duration", "$value": "500ms", "_use": "shimmer / shine overlay effects" }
+  },
+
+  "easing": {
+    "out":    { "$type": "cubicBezier", "$value": [0, 0, 0.4, 1],    "_css": "ease-out" },
+    "in-out": { "$type": "cubicBezier", "$value": [0.4, 0, 0.6, 1],  "_css": "ease-in-out" }
+  },
+
+  "presets": {
+    "card-hover": {
+      "transform":  "translateY(-6px)",
+      "duration":   "{duration.base}",
+      "easing":     "{easing.out}",
+      "_tailwind":  "transition-all duration-300 ease-out hover:-translate-y-1.5"
+    },
+    "button-press": {
+      "transform":  "scale(0.9)",
+      "duration":   "{duration.fast}",
+      "easing":     "{easing.out}",
+      "_tailwind":  "transition-[transform,background-color] duration-150 ease-out active:scale-90"
+    },
+    "image-zoom": {
+      "transform":  "scale(1.05)",
+      "duration":   "{duration.base}",
+      "easing":     "{easing.out}",
+      "_tailwind":  "transition-transform duration-300 ease-out group-hover:scale-105"
+    }
+  },
+
+  "reducedMotion": {
+    "strategy": "motion-reduce: prefix on Tailwind. All transforms become no-op; fades/color transitions remain.",
+    "examples": [
+      "motion-reduce:hover:-translate-y-0",
+      "motion-reduce:active:scale-100",
+      "motion-reduce:group-hover:scale-100",
+      "motion-reduce:group-hover:opacity-0"
+    ]
+  }
+}

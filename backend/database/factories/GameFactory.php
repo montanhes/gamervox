@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\GameStatus;
 use App\Models\Game;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,17 +27,17 @@ class GameFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'description' => fake()->paragraph(),
-            'status' => 'approved',
+            'status' => GameStatus::Approved,
         ];
     }
 
     public function pending(): static
     {
-        return $this->state(['status' => 'pending']);
+        return $this->state(['status' => GameStatus::Pending]);
     }
 
     public function rejected(): static
     {
-        return $this->state(['status' => 'rejected', 'moderation_reason' => fake()->sentence()]);
+        return $this->state(['status' => GameStatus::Rejected, 'moderation_reason' => fake()->sentence()]);
     }
 }
