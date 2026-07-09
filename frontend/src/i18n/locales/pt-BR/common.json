@@ -4,10 +4,11 @@
     "tagline": "A voz dos gamers pelas IPs que merecem voltar"
   },
   "home": {
-    "subtitle": "Cadastre jogos clássicos sem remake e vote pelo retorno das IPs que você ama. O ranking é feito pelo saldo de votos da comunidade.",
-    "cta_prompt": "Tem um jogo que merece voltar?",
-    "cta_submit": "Cadastrar agora",
-    "cta_login": "Entrar para votar"
+    "eyebrow": "Plataforma de votação",
+    "subtitle": "Cadastre jogos clássicos sem remake e vote pelo retorno das IPs que você ama. O ranking é pelo saldo de votos da comunidade.",
+    "cta_submit": "Cadastrar um jogo",
+    "cta_login": "Entrar para votar",
+    "feed_label": "Ranking"
   },
   "nav": {
     "home": "Início",

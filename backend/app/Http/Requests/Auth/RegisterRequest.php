@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class RegisterRequest extends FormRequest
 {
@@ -26,6 +27,7 @@ class RegisterRequest extends FormRequest
             'name' => ['required', 'string', 'max:120'],
             'email' => ['required', 'email', 'max:190', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'locale' => ['sometimes', 'string', Rule::in(array_keys(config('locales.supported')))],
         ];
     }
 }

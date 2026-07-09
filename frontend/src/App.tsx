@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, Route, Routes, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useInView } from 'react-intersection-observer'
+import { ArrowRight } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useGamesInfinite } from '@/hooks/useGamesInfinite'
 import { AuthCallbackPage } from '@/pages/AuthCallbackPage'
@@ -71,63 +72,78 @@ function HomePage() {
   })
 
   const games = data?.pages.flatMap((page) => page.data) ?? []
-  const isFiltering = !!search || !!activeTag
 
   return (
-    <div className="mx-auto max-w-7xl space-y-4 p-6">
-      <div className="py-8 text-center">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{t('app.tagline')}</h1>
-        <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">{t('home.subtitle')}</p>
-        <Link
-          to={user ? '/games/new' : '/login'}
-          className="mt-6 inline-block rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-hover"
-        >
-          {user ? t('home.cta_submit') : t('home.cta_login')}
-        </Link>
-      </div>
-
-      <SearchBar onSearch={setSearch} />
-
-      {activeTag && (
-        <button
-          type="button"
-          onClick={() => setSearchParams({})}
-          className="rounded-lg border border-primary bg-transparent px-1.5 py-0.5 text-xs text-foreground transition-colors hover:border-primary-hover"
-        >
-          #{activeTag} ×
-        </button>
-      )}
-
-      {!isFiltering && (
-        <div className="flex items-center justify-between rounded-lg border border-border bg-surface px-4 py-3">
-          <p className="text-sm text-muted-foreground">{t('home.cta_prompt')}</p>
-          <Link
-            to={user ? '/games/new' : '/login'}
-            className="text-sm font-medium text-primary transition-colors hover:text-primary-hover"
-          >
-            {t('home.cta_submit')} &rarr;
-          </Link>
+    <>
+      <section className="border-b border-border bg-surface">
+        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+            {t('home.eyebrow')}
+          </p>
+          <h1 className="mt-3 max-w-2xl text-5xl font-bold tracking-tighter text-foreground sm:text-6xl">
+            {t('app.tagline')}
+          </h1>
+          <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+            {t('home.subtitle')}
+          </p>
+          <div className="mt-8">
+            <Link
+              to={user ? '/games/new' : '/login'}
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out hover:bg-primary-hover active:scale-95 motion-reduce:active:scale-100"
+            >
+              {user ? t('home.cta_submit') : t('home.cta_login')}
+              <ArrowRight size={15} />
+            </Link>
+          </div>
         </div>
-      )}
+      </section>
 
-      {isLoading && <p className="text-muted-foreground">{t('game.loading')}</p>}
-      {!isLoading && games.length === 0 && <p className="text-muted-foreground">{t('game.empty')}</p>}
+      <div className="mx-auto max-w-7xl space-y-4 p-6">
+        <SearchBar onSearch={setSearch} />
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {games.map((game) => (
-          <GameCard key={game.id} game={game} />
-        ))}
+        {activeTag && (
+          <button
+            type="button"
+            onClick={() => setSearchParams({})}
+            className="rounded-lg border border-primary bg-transparent px-1.5 py-0.5 text-xs text-foreground transition-colors hover:border-primary-hover"
+          >
+            #{activeTag} ×
+          </button>
+        )}
+
+        {isLoading && <p className="text-muted-foreground">{t('game.loading')}</p>}
+        {!isLoading && games.length === 0 && <p className="text-muted-foreground">{t('game.empty')}</p>}
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          {games.map((game) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+        </div>
+
+        <div ref={ref} className="h-1" />
+        {isFetchingNextPage && <p className="text-center text-muted-foreground">{t('game.loading')}</p>}
       </div>
-
-      <div ref={ref} className="h-1" />
-      {isFetchingNextPage && <p className="text-center text-muted-foreground">{t('game.loading')}</p>}
-    </div>
+    </>
   )
+}
+
+function LocaleSync() {
+  const { i18n } = useTranslation()
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (user?.locale && user.locale !== (i18n.resolvedLanguage ?? i18n.language)) {
+      i18n.changeLanguage(user.locale)
+    }
+  }, [user?.locale, i18n])
+
+  return null
 }
 
 function App() {
   return (
     <>
+      <LocaleSync />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />

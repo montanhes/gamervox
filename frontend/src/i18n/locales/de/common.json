@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Gamervox",
+    "tagline": "Die Stimme der Gamer für IPs, die ein Comeback verdienen"
+  },
+  "home": {
+    "eyebrow": "Community-Abstimmungsplattform",
+    "subtitle": "Reiche klassische Spiele ohne Remakes ein und stimme für die Rückkehr der IPs ab, die du liebst. Das Ranking basiert auf dem Netto-Stimmensaldo der Community.",
+    "cta_submit": "Ein Spiel einreichen",
+    "cta_login": "Anmelden, um abzustimmen",
+    "feed_label": "Rangliste"
+  },
+  "nav": {
+    "home": "Startseite",
+    "search_placeholder": "Nach Titel oder Tag suchen...",
+    "submit_game": "Ein Spiel einreichen",
+    "my_games": "Meine Einreichungen",
+    "profile": "Profil",
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+  "profile": {
+    "title": "Profil",
+    "tab_data": "Details",
+    "name_label": "Name",
+    "language_label": "Seitensprache",
+    "save": "Änderungen speichern",
+    "saved": "Profil aktualisiert."
+  },
+  "vote": {
+    "yes": "Ja",
+    "no": "Nein",
+    "net_score": "Punktestand"
+  },
+  "status": {
+    "pending": "In Prüfung",
+    "approved": "Genehmigt",
+    "rejected": "Abgelehnt"
+  },
+  "auth": {
+    "signing_in": "Anmeldung läuft...",
+    "social_login_failed": "Wir konnten dich mit diesem Konto nicht anmelden. Bitte versuche es erneut.",
+    "continue_with_google": "Mit Google fortfahren",
+    "continue_with_discord": "Mit Discord fortfahren",
+    "continue_with_steam": "Mit Steam fortfahren",
+    "name": "Name",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "password_confirmation": "Passwort bestätigen",
+    "register": "Registrieren",
+    "have_account": "Schon ein Konto? Anmelden",
+    "no_account": "Noch kein Konto? Registrieren"
+  },
+  "game": {
+    "title": "Spieltitel",
+    "description": "Beschreibung",
+    "tags_placeholder": "Durch Kommas getrennte Tags (optional)",
+    "similar_warning": "Ein ähnliches Spiel ist bereits registriert. Möchtest du wirklich fortfahren?",
+    "confirm_duplicate": "Trotzdem einreichen",
+    "social_links": "Social-Media-Links des IP-Inhabers",
+    "loading": "Wird geladen...",
+    "empty": "Keine Spiele gefunden.",
+    "by": "Eingereicht von",
+    "read_more": "Mehr lesen",
+    "read_less": "Weniger lesen",
+    "share": "Link kopieren",
+    "share_copied": "Link kopiert"
+  },
+  "comments": {
+    "title": "Kommentare",
+    "placeholder": "Hinterlasse einen Kommentar...",
+    "reply_placeholder": "Schreibe eine Antwort...",
+    "submit": "Kommentieren",
+    "reply_submit": "Antworten",
+    "reply": "Antworten",
+    "show_replies_one": "1 Antwort",
+    "show_replies_other": "{{count}} Antworten",
+    "hide_replies": "Antworten ausblenden",
+    "load_more": "Weitere Kommentare laden",
+    "load_more_replies": "Weitere Antworten laden",
+    "empty": "Noch keine Kommentare. Sei der Erste!",
+    "error": "Dein Kommentar konnte nicht veröffentlicht werden. Bitte versuche es erneut."
+  }
+}

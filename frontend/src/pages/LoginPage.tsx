@@ -6,7 +6,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { DiscordIcon, GoogleIcon, SteamIcon } from '@/components/SocialIcons'
 
 export function LoginPage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const { login, register, loginError, registerError } = useAuth()
 
@@ -24,7 +24,13 @@ export function LoginPage() {
     if (mode === 'login') {
       await login({ email, password })
     } else {
-      await register({ name, email, password, password_confirmation: passwordConfirmation })
+      await register({
+        name,
+        email,
+        password,
+        password_confirmation: passwordConfirmation,
+        locale: i18n.resolvedLanguage ?? i18n.language,
+      })
     }
 
     navigate('/')

@@ -4,6 +4,13 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 
 import ptBRCommon from './locales/pt-BR/common.json'
 import enCommon from './locales/en/common.json'
+import esCommon from './locales/es/common.json'
+import ruCommon from './locales/ru/common.json'
+import zhCNCommon from './locales/zh-CN/common.json'
+import jaCommon from './locales/ja/common.json'
+import deCommon from './locales/de/common.json'
+import frCommon from './locales/fr/common.json'
+import koCommon from './locales/ko/common.json'
 
 i18n
   .use(LanguageDetector)
@@ -12,9 +19,16 @@ i18n
     resources: {
       'pt-BR': { common: ptBRCommon },
       en: { common: enCommon },
+      es: { common: esCommon },
+      ru: { common: ruCommon },
+      'zh-CN': { common: zhCNCommon },
+      ja: { common: jaCommon },
+      de: { common: deCommon },
+      fr: { common: frCommon },
+      ko: { common: koCommon },
     },
     fallbackLng: 'pt-BR',
-    supportedLngs: ['pt-BR', 'en'],
+    supportedLngs: ['pt-BR', 'en', 'es', 'ru', 'zh-CN', 'ja', 'de', 'fr', 'ko'],
     defaultNS: 'common',
     interpolation: {
       escapeValue: false,

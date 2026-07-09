@@ -5,8 +5,14 @@ import { useAuth } from '@/hooks/useAuth'
 import { MyGamesList } from '@/components/MyGamesList'
 import type { User } from '@/api/auth'
 
-function LanguageSelect() {
+function LanguageSelect({ user }: { user: User }) {
   const { t, i18n } = useTranslation()
+  const { updateProfile } = useAuth()
+
+  async function handleChange(locale: string) {
+    i18n.changeLanguage(locale)
+    await updateProfile({ name: user.name, locale })
+  }
 
   return (
     <div className="space-y-1.5">
@@ -16,18 +22,25 @@ function LanguageSelect() {
       <select
         id="language"
         value={i18n.resolvedLanguage ?? i18n.language}
-        onChange={(e) => i18n.changeLanguage(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
         className="w-full rounded-control border border-border-strong bg-background px-3 py-2 text-sm text-foreground transition-colors focus-visible:border-primary focus-visible:outline-none"
       >
         <option value="pt-BR">Português (Brasil)</option>
         <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="ru">Русский</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="zh-CN">简体中文</option>
       </select>
     </div>
   )
 }
 
 function ProfileForm({ user }: { user: User }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { updateProfile, isUpdatingProfile } = useAuth()
 
   const [name, setName] = useState(user.name)
@@ -40,7 +53,7 @@ function ProfileForm({ user }: { user: User }) {
     setSaved(false)
 
     try {
-      await updateProfile(name)
+      await updateProfile({ name, locale: i18n.resolvedLanguage ?? i18n.language })
       setSaved(true)
     } catch (err) {
       if (isAxiosError(err) && err.response?.data?.errors?.name?.[0]) {
@@ -64,7 +77,7 @@ function ProfileForm({ user }: { user: User }) {
         <p className="text-sm text-muted-foreground">{user.email}</p>
       </div>
 
-      <LanguageSelect />
+      <LanguageSelect user={user} />
 
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="space-y-1.5">

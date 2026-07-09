@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProfileRequest extends FormRequest
 {
@@ -24,6 +25,7 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:120'],
+            'locale' => ['sometimes', 'string', Rule::in(array_keys(config('locales.supported')))],
         ];
     }
 }

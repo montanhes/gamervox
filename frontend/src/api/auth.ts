@@ -6,6 +6,7 @@ export interface User {
   email: string
   avatar_url: string | null
   is_admin: boolean
+  locale: string
 }
 
 export async function fetchMe(): Promise<User | null> {
@@ -27,12 +28,14 @@ export async function register(
   email: string,
   password: string,
   password_confirmation: string,
+  locale: string,
 ): Promise<User> {
   const { data } = await api.post<{ data: User }>('/api/register', {
     name,
     email,
     password,
     password_confirmation,
+    locale,
   })
   return data.data
 }
@@ -41,8 +44,8 @@ export async function logout(): Promise<void> {
   await api.post('/api/logout')
 }
 
-export async function updateProfile(name: string): Promise<User> {
-  const { data } = await api.patch<{ data: User }>('/api/me', { name })
+export async function updateProfile(name: string, locale: string): Promise<User> {
+  const { data } = await api.patch<{ data: User }>('/api/me', { name, locale })
   return data.data
 }
 

@@ -4,10 +4,11 @@
     "tagline": "The voice of gamers for IPs that deserve to come back"
   },
   "home": {
+    "eyebrow": "Community voting platform",
     "subtitle": "Submit classic games without remakes and vote for the return of the IPs you love. The ranking is driven by the community's net vote score.",
-    "cta_prompt": "Got a game that deserves to come back?",
-    "cta_submit": "Submit now",
-    "cta_login": "Log in to vote"
+    "cta_submit": "Submit a game",
+    "cta_login": "Log in to vote",
+    "feed_label": "Ranking"
   },
   "nav": {
     "home": "Home",

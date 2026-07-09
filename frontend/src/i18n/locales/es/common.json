@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Gamervox",
+    "tagline": "La voz de los gamers por las IPs que merecen volver"
+  },
+  "home": {
+    "eyebrow": "Plataforma de votación comunitaria",
+    "subtitle": "Envía juegos clásicos sin remakes y vota por el regreso de las IPs que amas. El ranking se basa en el saldo neto de votos de la comunidad.",
+    "cta_submit": "Enviar un juego",
+    "cta_login": "Inicia sesión para votar",
+    "feed_label": "Ranking"
+  },
+  "nav": {
+    "home": "Inicio",
+    "search_placeholder": "Buscar por título o etiqueta...",
+    "submit_game": "Enviar un juego",
+    "my_games": "Mis envíos",
+    "profile": "Perfil",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión"
+  },
+  "profile": {
+    "title": "Perfil",
+    "tab_data": "Datos",
+    "name_label": "Nombre",
+    "language_label": "Idioma del sitio",
+    "save": "Guardar cambios",
+    "saved": "Perfil actualizado."
+  },
+  "vote": {
+    "yes": "Sí",
+    "no": "No",
+    "net_score": "Puntuación"
+  },
+  "status": {
+    "pending": "En revisión",
+    "approved": "Aprobado",
+    "rejected": "Rechazado"
+  },
+  "auth": {
+    "signing_in": "Iniciando sesión...",
+    "social_login_failed": "No pudimos iniciar sesión con esa cuenta. Por favor, inténtalo de nuevo.",
+    "continue_with_google": "Continuar con Google",
+    "continue_with_discord": "Continuar con Discord",
+    "continue_with_steam": "Continuar con Steam",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "password_confirmation": "Confirmar contraseña",
+    "register": "Registrarse",
+    "have_account": "¿Ya tienes una cuenta? Inicia sesión",
+    "no_account": "¿No tienes una cuenta? Regístrate"
+  },
+  "game": {
+    "title": "Título del juego",
+    "description": "Descripción",
+    "tags_placeholder": "Etiquetas separadas por comas (opcional)",
+    "similar_warning": "Ya hay un juego similar registrado. ¿Estás seguro de que quieres continuar?",
+    "confirm_duplicate": "Enviar de todos modos",
+    "social_links": "Enlaces sociales del propietario de la IP",
+    "loading": "Cargando...",
+    "empty": "No se encontraron juegos.",
+    "by": "Enviado por",
+    "read_more": "Leer más",
+    "read_less": "Leer menos",
+    "share": "Copiar enlace",
+    "share_copied": "Enlace copiado"
+  },
+  "comments": {
+    "title": "Comentarios",
+    "placeholder": "Deja un comentario...",
+    "reply_placeholder": "Escribe una respuesta...",
+    "submit": "Comentar",
+    "reply_submit": "Responder",
+    "reply": "Responder",
+    "show_replies_one": "1 respuesta",
+    "show_replies_other": "{{count}} respuestas",
+    "hide_replies": "Ocultar respuestas",
+    "load_more": "Cargar más comentarios",
+    "load_more_replies": "Cargar más respuestas",
+    "empty": "Aún no hay comentarios. ¡Sé el primero!",
+    "error": "No pudimos publicar tu comentario. Por favor, inténtalo de nuevo."
+  }
+}

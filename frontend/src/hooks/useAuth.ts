@@ -23,12 +23,14 @@ export function useAuth() {
       email,
       password,
       password_confirmation,
+      locale,
     }: {
       name: string
       email: string
       password: string
       password_confirmation: string
-    }) => authApi.register(name, email, password, password_confirmation),
+      locale: string
+    }) => authApi.register(name, email, password, password_confirmation, locale),
     onSuccess: (user) => queryClient.setQueryData(ME_QUERY_KEY, user),
   })
 
@@ -38,7 +40,7 @@ export function useAuth() {
   })
 
   const updateProfileMutation = useMutation({
-    mutationFn: (name: string) => authApi.updateProfile(name),
+    mutationFn: ({ name, locale }: { name: string; locale: string }) => authApi.updateProfile(name, locale),
     onSuccess: (user) => queryClient.setQueryData(ME_QUERY_KEY, user),
   })
 

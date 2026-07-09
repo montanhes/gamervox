@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Gamervox",
+    "tagline": "La voix des joueurs pour les IP qui méritent de revenir"
+  },
+  "home": {
+    "eyebrow": "Plateforme de vote communautaire",
+    "subtitle": "Soumettez des jeux classiques sans remake et votez pour le retour des IP que vous aimez. Le classement est déterminé par le score net de votes de la communauté.",
+    "cta_submit": "Soumettre un jeu",
+    "cta_login": "Connectez-vous pour voter",
+    "feed_label": "Classement"
+  },
+  "nav": {
+    "home": "Accueil",
+    "search_placeholder": "Rechercher par titre ou tag...",
+    "submit_game": "Soumettre un jeu",
+    "my_games": "Mes soumissions",
+    "profile": "Profil",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "profile": {
+    "title": "Profil",
+    "tab_data": "Informations",
+    "name_label": "Nom",
+    "language_label": "Langue du site",
+    "save": "Enregistrer les modifications",
+    "saved": "Profil mis à jour."
+  },
+  "vote": {
+    "yes": "Oui",
+    "no": "Non",
+    "net_score": "Score"
+  },
+  "status": {
+    "pending": "En cours d'examen",
+    "approved": "Approuvé",
+    "rejected": "Rejeté"
+  },
+  "auth": {
+    "signing_in": "Connexion en cours...",
+    "social_login_failed": "Nous n'avons pas pu vous connecter avec ce compte. Veuillez réessayer.",
+    "continue_with_google": "Continuer avec Google",
+    "continue_with_discord": "Continuer avec Discord",
+    "continue_with_steam": "Continuer avec Steam",
+    "name": "Nom",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "password_confirmation": "Confirmer le mot de passe",
+    "register": "S'inscrire",
+    "have_account": "Vous avez déjà un compte ? Connectez-vous",
+    "no_account": "Vous n'avez pas de compte ? Inscrivez-vous"
+  },
+  "game": {
+    "title": "Titre du jeu",
+    "description": "Description",
+    "tags_placeholder": "Tags séparés par des virgules (facultatif)",
+    "similar_warning": "Un jeu similaire est déjà enregistré. Voulez-vous vraiment continuer ?",
+    "confirm_duplicate": "Soumettre quand même",
+    "social_links": "Liens sociaux du détenteur de l'IP",
+    "loading": "Chargement...",
+    "empty": "Aucun jeu trouvé.",
+    "by": "Soumis par",
+    "read_more": "Lire la suite",
+    "read_less": "Réduire",
+    "share": "Copier le lien",
+    "share_copied": "Lien copié"
+  },
+  "comments": {
+    "title": "Commentaires",
+    "placeholder": "Laissez un commentaire...",
+    "reply_placeholder": "Écrivez une réponse...",
+    "submit": "Commenter",
+    "reply_submit": "Répondre",
+    "reply": "Répondre",
+    "show_replies_one": "1 réponse",
+    "show_replies_other": "{{count}} réponses",
+    "hide_replies": "Masquer les réponses",
+    "load_more": "Charger plus de commentaires",
+    "load_more_replies": "Charger plus de réponses",
+    "empty": "Pas encore de commentaires. Soyez le premier !",
+    "error": "Nous n'avons pas pu publier votre commentaire. Veuillez réessayer."
+  }
+}

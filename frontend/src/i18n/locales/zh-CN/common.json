@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Gamervox",
+    "tagline": "玩家为值得回归的 IP 发声"
+  },
+  "home": {
+    "eyebrow": "社区投票平台",
+    "subtitle": "提交没有重制版的经典游戏，为您喜爱的 IP 回归投票。排名由社区的净投票分数决定。",
+    "cta_submit": "提交游戏",
+    "cta_login": "登录以投票",
+    "feed_label": "排行榜"
+  },
+  "nav": {
+    "home": "首页",
+    "search_placeholder": "按标题或标签搜索...",
+    "submit_game": "提交游戏",
+    "my_games": "我的提交",
+    "profile": "个人资料",
+    "login": "登录",
+    "logout": "退出登录"
+  },
+  "profile": {
+    "title": "个人资料",
+    "tab_data": "详细信息",
+    "name_label": "姓名",
+    "language_label": "网站语言",
+    "save": "保存更改",
+    "saved": "个人资料已更新。"
+  },
+  "vote": {
+    "yes": "是",
+    "no": "否",
+    "net_score": "得分"
+  },
+  "status": {
+    "pending": "审核中",
+    "approved": "已批准",
+    "rejected": "已拒绝"
+  },
+  "auth": {
+    "signing_in": "正在登录...",
+    "social_login_failed": "无法使用该账号登录。请重试。",
+    "continue_with_google": "使用 Google 继续",
+    "continue_with_discord": "使用 Discord 继续",
+    "continue_with_steam": "使用 Steam 继续",
+    "name": "姓名",
+    "email": "电子邮件",
+    "password": "密码",
+    "password_confirmation": "确认密码",
+    "register": "注册",
+    "have_account": "已有账号？登录",
+    "no_account": "还没有账号？注册"
+  },
+  "game": {
+    "title": "游戏标题",
+    "description": "描述",
+    "tags_placeholder": "以逗号分隔的标签（可选）",
+    "similar_warning": "已存在一款相似的游戏。您确定要继续吗？",
+    "confirm_duplicate": "仍然提交",
+    "social_links": "IP 所有者的社交链接",
+    "loading": "加载中...",
+    "empty": "未找到游戏。",
+    "by": "提交者",
+    "read_more": "阅读更多",
+    "read_less": "收起",
+    "share": "复制链接",
+    "share_copied": "链接已复制"
+  },
+  "comments": {
+    "title": "评论",
+    "placeholder": "发表评论...",
+    "reply_placeholder": "写一条回复...",
+    "submit": "评论",
+    "reply_submit": "回复",
+    "reply": "回复",
+    "show_replies_one": "1 条回复",
+    "show_replies_other": "{{count}} 条回复",
+    "hide_replies": "隐藏回复",
+    "load_more": "加载更多评论",
+    "load_more_replies": "加载更多回复",
+    "empty": "暂无评论。快来抢占第一个吧！",
+    "error": "无法发布您的评论。请重试。"
+  }
+}

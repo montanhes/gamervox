@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Gamervox",
+    "tagline": "復活すべきIPのための、ゲーマーの声"
+  },
+  "home": {
+    "eyebrow": "コミュニティ投票プラットフォーム",
+    "subtitle": "リメイクや続編のないクラシックゲームを投稿し、あなたが愛するIPの復活に投票しましょう。ランキングはコミュニティの純投票スコアによって決まります。",
+    "cta_submit": "ゲームを投稿する",
+    "cta_login": "投票するにはログイン",
+    "feed_label": "ランキング"
+  },
+  "nav": {
+    "home": "ホーム",
+    "search_placeholder": "タイトルまたはタグで検索...",
+    "submit_game": "ゲームを投稿する",
+    "my_games": "投稿したゲーム",
+    "profile": "プロフィール",
+    "login": "ログイン",
+    "logout": "ログアウト"
+  },
+  "profile": {
+    "title": "プロフィール",
+    "tab_data": "詳細",
+    "name_label": "名前",
+    "language_label": "サイトの言語",
+    "save": "変更を保存",
+    "saved": "プロフィールを更新しました。"
+  },
+  "vote": {
+    "yes": "はい",
+    "no": "いいえ",
+    "net_score": "スコア"
+  },
+  "status": {
+    "pending": "審査中",
+    "approved": "承認済み",
+    "rejected": "却下"
+  },
+  "auth": {
+    "signing_in": "サインイン中...",
+    "social_login_failed": "そのアカウントでサインインできませんでした。もう一度お試しください。",
+    "continue_with_google": "Googleで続ける",
+    "continue_with_discord": "Discordで続ける",
+    "continue_with_steam": "Steamで続ける",
+    "name": "名前",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "password_confirmation": "パスワード(確認)",
+    "register": "新規登録",
+    "have_account": "すでにアカウントをお持ちですか?ログイン",
+    "no_account": "アカウントをお持ちでないですか?新規登録"
+  },
+  "game": {
+    "title": "ゲームタイトル",
+    "description": "説明",
+    "tags_placeholder": "カンマ区切りのタグ(任意)",
+    "similar_warning": "似たようなゲームがすでに登録されています。続行してもよろしいですか?",
+    "confirm_duplicate": "そのまま投稿する",
+    "social_links": "IP権利者のソーシャルリンク",
+    "loading": "読み込み中...",
+    "empty": "ゲームが見つかりません。",
+    "by": "投稿者:",
+    "read_more": "もっと見る",
+    "read_less": "閉じる",
+    "share": "リンクをコピー",
+    "share_copied": "リンクをコピーしました"
+  },
+  "comments": {
+    "title": "コメント",
+    "placeholder": "コメントを入力...",
+    "reply_placeholder": "返信を入力...",
+    "submit": "コメントする",
+    "reply_submit": "返信する",
+    "reply": "返信",
+    "show_replies_one": "返信1件",
+    "show_replies_other": "返信{{count}}件",
+    "hide_replies": "返信を非表示",
+    "load_more": "コメントをさらに読み込む",
+    "load_more_replies": "返信をさらに読み込む",
+    "empty": "まだコメントがありません。最初のコメントを投稿しましょう!",
+    "error": "コメントを投稿できませんでした。もう一度お試しください。"
+  }
+}
