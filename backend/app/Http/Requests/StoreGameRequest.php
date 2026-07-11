@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\SocialPlatform;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreGameRequest extends FormRequest
 {
@@ -29,7 +31,7 @@ class StoreGameRequest extends FormRequest
             'tags' => ['sometimes', 'array', 'max:8'],
             'tags.*' => ['string', 'max:40'],
             'social_links' => ['sometimes', 'array', 'max:10'],
-            'social_links.*.platform' => ['required', 'string', 'max:30'],
+            'social_links.*.platform' => ['required', Rule::enum(SocialPlatform::class)],
             'social_links.*.url' => ['required', 'url', 'max:2048'],
             'confirm_duplicate' => ['sometimes', 'boolean'],
         ];

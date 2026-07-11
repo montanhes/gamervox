@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Game;
 
+use App\Enums\GameStatus;
 use App\Models\Game;
 use App\Models\User;
 use App\Models\Vote;
@@ -15,7 +16,7 @@ class VoteTest extends TestCase
     public function test_user_can_cast_a_yes_vote(): void
     {
         $user = User::factory()->create();
-        $game = Game::factory()->create(['status' => 'approved']);
+        $game = Game::factory()->create(['status' => GameStatus::Approved]);
 
         $response = $this->actingAs($user)->postJson("/api/games/{$game->slug}/vote", ['value' => 1]);
 
@@ -28,7 +29,7 @@ class VoteTest extends TestCase
     public function test_user_cannot_cast_two_separate_votes_for_the_same_game(): void
     {
         $user = User::factory()->create();
-        $game = Game::factory()->create(['status' => 'approved']);
+        $game = Game::factory()->create(['status' => GameStatus::Approved]);
 
         $this->actingAs($user)->postJson("/api/games/{$game->slug}/vote", ['value' => 1]);
         $this->actingAs($user)->postJson("/api/games/{$game->slug}/vote", ['value' => 1]);
@@ -40,7 +41,7 @@ class VoteTest extends TestCase
     public function test_switching_vote_from_yes_to_no_adjusts_counters_correctly(): void
     {
         $user = User::factory()->create();
-        $game = Game::factory()->create(['status' => 'approved']);
+        $game = Game::factory()->create(['status' => GameStatus::Approved]);
 
         $this->actingAs($user)->postJson("/api/games/{$game->slug}/vote", ['value' => 1]);
         $response = $this->actingAs($user)->postJson("/api/games/{$game->slug}/vote", ['value' => -1]);
@@ -51,7 +52,7 @@ class VoteTest extends TestCase
     public function test_removing_a_vote_decrements_counters(): void
     {
         $user = User::factory()->create();
-        $game = Game::factory()->create(['status' => 'approved']);
+        $game = Game::factory()->create(['status' => GameStatus::Approved]);
 
         $this->actingAs($user)->postJson("/api/games/{$game->slug}/vote", ['value' => 1]);
         $response = $this->actingAs($user)->deleteJson("/api/games/{$game->slug}/vote");
@@ -62,7 +63,7 @@ class VoteTest extends TestCase
 
     public function test_net_score_reflects_multiple_users_voting(): void
     {
-        $game = Game::factory()->create(['status' => 'approved']);
+        $game = Game::factory()->create(['status' => GameStatus::Approved]);
         $voters = User::factory()->count(3)->create();
 
         foreach ($voters as $i => $voter) {
@@ -77,7 +78,7 @@ class VoteTest extends TestCase
 
     public function test_guest_cannot_vote(): void
     {
-        $game = Game::factory()->create(['status' => 'approved']);
+        $game = Game::factory()->create(['status' => GameStatus::Approved]);
 
         $this->postJson("/api/games/{$game->slug}/vote", ['value' => 1])->assertUnauthorized();
     }

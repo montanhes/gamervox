@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services\Moderation;
 
+use App\Enums\GameStatus;
 use App\Models\Game;
 use App\Services\Moderation\GeminiModerationService;
 use App\Services\Moderation\ModerationServiceException;
@@ -30,7 +31,7 @@ class GeminiModerationServiceTest extends TestCase
         ]);
         $this->app->instance(ClientContract::class, $fake);
 
-        $game = Game::factory()->create(['title' => 'Breath of Fire', 'status' => 'pending']);
+        $game = Game::factory()->create(['title' => 'Breath of Fire', 'status' => GameStatus::Pending]);
 
         $result = (new GeminiModerationService($fake))->moderateGame($game);
 
@@ -70,7 +71,7 @@ class GeminiModerationServiceTest extends TestCase
             }
         };
 
-        $game = Game::factory()->create(['status' => 'pending']);
+        $game = Game::factory()->create(['status' => GameStatus::Pending]);
 
         $this->expectException(ModerationServiceException::class);
 

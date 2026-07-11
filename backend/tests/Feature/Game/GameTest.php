@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Game;
 
+use App\Enums\GameStatus;
 use App\Jobs\ModerateGameJob;
 use App\Models\Game;
 use App\Models\User;
@@ -17,8 +18,8 @@ class GameTest extends TestCase
 
     public function test_guest_can_list_approved_games(): void
     {
-        Game::factory()->count(3)->create(['status' => 'approved']);
-        Game::factory()->create(['status' => 'pending']);
+        Game::factory()->count(3)->create(['status' => GameStatus::Approved]);
+        Game::factory()->create(['status' => GameStatus::Pending]);
 
         $response = $this->getJson('/api/games');
 
@@ -28,8 +29,8 @@ class GameTest extends TestCase
 
     public function test_games_are_ordered_by_net_score_descending(): void
     {
-        $low = Game::factory()->create(['status' => 'approved', 'net_score' => 5]);
-        $high = Game::factory()->create(['status' => 'approved', 'net_score' => 50]);
+        $low = Game::factory()->create(['status' => GameStatus::Approved, 'net_score' => 5]);
+        $high = Game::factory()->create(['status' => GameStatus::Approved, 'net_score' => 50]);
 
         $response = $this->getJson('/api/games');
 
@@ -50,7 +51,7 @@ class GameTest extends TestCase
             'image' => UploadedFile::fake()->image('cover.jpg', 1600, 900),
             'tags' => ['rpg', 'snes'],
             'social_links' => [
-                ['platform' => 'twitter', 'url' => 'https://twitter.com/capcom'],
+                ['platform' => 'x', 'url' => 'https://x.com/capcom'],
             ],
         ]);
 
@@ -59,9 +60,9 @@ class GameTest extends TestCase
         $response->assertJsonPath('data.slug', 'breath-of-fire');
         $response->assertJsonPath('data.status', 'pending');
 
-        $this->assertDatabaseHas('games', ['slug' => 'breath-of-fire', 'status' => 'pending']);
+        $this->assertDatabaseHas('games', ['slug' => 'breath-of-fire', 'status' => GameStatus::Pending]);
         $this->assertDatabaseHas('tags', ['slug' => 'rpg']);
-        $this->assertDatabaseHas('game_social_links', ['platform' => 'twitter']);
+        $this->assertDatabaseHas('game_social_links', ['platform' => 'x']);
 
         $game = Game::where('slug', 'breath-of-fire')->first();
         Storage::disk('public')->assertExists($game->image_path);
@@ -72,7 +73,7 @@ class GameTest extends TestCase
     {
         Storage::fake('public');
         Queue::fake();
-        Game::factory()->create(['title' => 'Breath of Fire', 'slug' => 'breath-of-fire', 'status' => 'approved']);
+        Game::factory()->create(['title' => 'Breath of Fire', 'slug' => 'breath-of-fire', 'status' => GameStatus::Approved]);
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->postJson('/api/games', [
@@ -102,7 +103,7 @@ class GameTest extends TestCase
 
     public function test_show_returns_approved_game_to_anyone(): void
     {
-        $game = Game::factory()->create(['status' => 'approved']);
+        $game = Game::factory()->create(['status' => GameStatus::Approved]);
 
         $this->getJson("/api/games/{$game->slug}")->assertOk();
     }
@@ -111,7 +112,7 @@ class GameTest extends TestCase
     {
         $owner = User::factory()->create();
         $other = User::factory()->create();
-        $game = Game::factory()->create(['status' => 'pending', 'user_id' => $owner->id]);
+        $game = Game::factory()->create(['status' => GameStatus::Pending, 'user_id' => $owner->id]);
 
         $this->actingAs($other)->getJson("/api/games/{$game->slug}")->assertNotFound();
         $this->actingAs($owner)->getJson("/api/games/{$game->slug}")->assertOk();
@@ -120,8 +121,8 @@ class GameTest extends TestCase
     public function test_user_can_list_their_own_submissions_with_status_and_reason(): void
     {
         $user = User::factory()->create();
-        Game::factory()->for($user)->create(['status' => 'rejected', 'moderation_reason' => 'Fora do tema.']);
-        Game::factory()->create(['status' => 'approved']);
+        Game::factory()->for($user)->create(['status' => GameStatus::Rejected, 'moderation_reason' => 'Fora do tema.']);
+        Game::factory()->create(['status' => GameStatus::Approved]);
 
         $response = $this->actingAs($user)->getJson('/api/me/games');
 

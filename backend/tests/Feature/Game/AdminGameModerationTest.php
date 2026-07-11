@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Game;
 
+use App\Enums\GameStatus;
 use App\Models\Game;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,7 +15,7 @@ class AdminGameModerationTest extends TestCase
     public function test_admin_can_override_game_status(): void
     {
         $admin = User::factory()->create(['is_admin' => true]);
-        $game = Game::factory()->create(['status' => 'pending']);
+        $game = Game::factory()->create(['status' => GameStatus::Pending]);
 
         $response = $this->actingAs($admin)->patchJson("/api/admin/games/{$game->id}/moderate", [
             'status' => 'approved',
@@ -26,7 +27,7 @@ class AdminGameModerationTest extends TestCase
 
         $this->assertDatabaseHas('games', [
             'id' => $game->id,
-            'status' => 'approved',
+            'status' => GameStatus::Approved,
             'moderation_reason' => 'Aprovado manualmente após falha da IA.',
         ]);
     }
@@ -34,7 +35,7 @@ class AdminGameModerationTest extends TestCase
     public function test_non_admin_cannot_override_game_status(): void
     {
         $user = User::factory()->create(['is_admin' => false]);
-        $game = Game::factory()->create(['status' => 'pending']);
+        $game = Game::factory()->create(['status' => GameStatus::Pending]);
 
         $this->actingAs($user)
             ->patchJson("/api/admin/games/{$game->id}/moderate", ['status' => 'approved'])
@@ -43,7 +44,7 @@ class AdminGameModerationTest extends TestCase
 
     public function test_guest_cannot_override_game_status(): void
     {
-        $game = Game::factory()->create(['status' => 'pending']);
+        $game = Game::factory()->create(['status' => GameStatus::Pending]);
 
         $this->patchJson("/api/admin/games/{$game->id}/moderate", ['status' => 'approved'])
             ->assertUnauthorized();
