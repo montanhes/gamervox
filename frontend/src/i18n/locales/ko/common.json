@@ -83,5 +83,23 @@
   },
   "footer": {
     "rights": "모든 권리 보유."
+  },
+  "form": {
+    "tags_label": "태그",
+    "tag_placeholder": "입력 후 Enter 키를 누르세요...",
+    "tags_hint": "Enter 또는 쉼표로 추가. 최대 {{max}}개.",
+    "image_label": "게임 커버",
+    "image_pick": "이미지 선택",
+    "image_hint": "PNG, JPG 또는 WebP, 최대 4MB",
+    "image_change": "이미지 변경",
+    "image_recrop": "자르기 조정",
+    "image_required": "커버 이미지를 선택하세요.",
+    "crop_confirm": "이 자르기 사용",
+    "zoom": "확대/축소",
+    "social_add": "소셜 링크 추가",
+    "social_platform": "플랫폼",
+    "remove": "삭제",
+    "submitting": "제출 중...",
+    "cancel": "취소"
   }
 }

@@ -83,5 +83,23 @@
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten."
+  },
+  "form": {
+    "tags_label": "Tags",
+    "tag_placeholder": "Tippen und Enter drücken...",
+    "tags_hint": "Enter oder Komma fügt hinzu. Bis zu {{max}} Tags.",
+    "image_label": "Spielcover",
+    "image_pick": "Bild auswählen",
+    "image_hint": "PNG, JPG oder WebP, bis 4MB",
+    "image_change": "Bild wechseln",
+    "image_recrop": "Zuschnitt anpassen",
+    "image_required": "Wähle ein Coverbild.",
+    "crop_confirm": "Diesen Zuschnitt verwenden",
+    "zoom": "Zoom",
+    "social_add": "Soziales Netzwerk hinzufügen",
+    "social_platform": "Plattform",
+    "remove": "Entfernen",
+    "submitting": "Wird gesendet...",
+    "cancel": "Abbrechen"
   }
 }

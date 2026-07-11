@@ -83,5 +83,23 @@
   },
   "footer": {
     "rights": "すべての権利を保有しています。"
+  },
+  "form": {
+    "tags_label": "タグ",
+    "tag_placeholder": "入力してEnterキーを押す...",
+    "tags_hint": "Enterまたはカンマで追加。最大{{max}}個。",
+    "image_label": "ゲームカバー",
+    "image_pick": "画像を選択",
+    "image_hint": "PNG、JPG、WebP、最大4MB",
+    "image_change": "画像を変更",
+    "image_recrop": "トリミングを調整",
+    "image_required": "カバー画像を選択してください。",
+    "crop_confirm": "このトリミングを使用",
+    "zoom": "ズーム",
+    "social_add": "SNSリンクを追加",
+    "social_platform": "プラットフォーム",
+    "remove": "削除",
+    "submitting": "送信中...",
+    "cancel": "キャンセル"
   }
 }

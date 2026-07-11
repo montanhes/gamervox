@@ -83,5 +83,23 @@
   },
   "footer": {
     "rights": "Todos los derechos reservados."
+  },
+  "form": {
+    "tags_label": "Tags",
+    "tag_placeholder": "Escribe y pulsa Enter...",
+    "tags_hint": "Enter o coma añade. Hasta {{max}} tags.",
+    "image_label": "Portada del juego",
+    "image_pick": "Elegir imagen",
+    "image_hint": "PNG, JPG o WebP, hasta 4MB",
+    "image_change": "Cambiar imagen",
+    "image_recrop": "Ajustar recorte",
+    "image_required": "Elige una imagen de portada.",
+    "crop_confirm": "Usar este recorte",
+    "zoom": "Zoom",
+    "social_add": "Añadir red social",
+    "social_platform": "Plataforma",
+    "remove": "Eliminar",
+    "submitting": "Enviando...",
+    "cancel": "Cancelar"
   }
 }

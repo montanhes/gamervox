@@ -83,5 +83,23 @@
   },
   "footer": {
     "rights": "Все права защищены."
+  },
+  "form": {
+    "tags_label": "Теги",
+    "tag_placeholder": "Введите и нажмите Enter...",
+    "tags_hint": "Enter или запятая добавляет. До {{max}} тегов.",
+    "image_label": "Обложка игры",
+    "image_pick": "Выбрать изображение",
+    "image_hint": "PNG, JPG или WebP, до 4МБ",
+    "image_change": "Сменить изображение",
+    "image_recrop": "Изменить кадрирование",
+    "image_required": "Выберите изображение обложки.",
+    "crop_confirm": "Использовать это кадрирование",
+    "zoom": "Масштаб",
+    "social_add": "Добавить соцсеть",
+    "social_platform": "Платформа",
+    "remove": "Удалить",
+    "submitting": "Отправка...",
+    "cancel": "Отмена"
   }
 }

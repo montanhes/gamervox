@@ -9,19 +9,26 @@ export function VoteButtons({
   noVotesCount,
   netScore,
   leading,
+  size = 'sm',
 }: {
   slug: string
   yesVotesCount: number
   noVotesCount: number
   netScore: number
   leading?: ReactNode
+  size?: 'sm' | 'lg'
 }) {
   const { t } = useTranslation()
   const { vote, isVoting } = useVote(slug)
 
+  const lg = size === 'lg'
+  const buttonBase = `inline-flex flex-1 items-center justify-center font-semibold transition-[transform,background-color] duration-150 ease-out active:scale-90 disabled:opacity-50 motion-reduce:active:scale-100 ${
+    lg ? 'h-11 gap-2 rounded-lg px-4 text-sm' : 'h-9 gap-1.5 rounded-lg px-3'
+  }`
+
   return (
-    <div className="flex flex-col gap-1.5 text-xs">
-      <div className="flex items-center gap-1.5">
+    <div className={`flex flex-col ${lg ? 'gap-2 text-sm' : 'gap-1.5 text-xs'}`}>
+      <div className={`flex items-center ${lg ? 'gap-2' : 'gap-1.5'}`}>
         {leading}
 
         <button
@@ -29,9 +36,9 @@ export function VoteButtons({
           disabled={isVoting}
           onClick={() => vote(1)}
           aria-label={t('vote.yes')}
-          className="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg bg-primary/20 px-3 font-semibold text-primary-hover transition-[transform,background-color] duration-150 ease-out hover:bg-primary/30 active:scale-90 disabled:opacity-50 motion-reduce:active:scale-100"
+          className={`${buttonBase} bg-primary/20 text-primary-hover hover:bg-primary/30`}
         >
-          <ThumbsUp size={14} fill="currentColor" />
+          <ThumbsUp size={lg ? 16 : 14} fill="currentColor" />
           {yesVotesCount}
         </button>
 
@@ -40,19 +47,21 @@ export function VoteButtons({
           disabled={isVoting}
           onClick={() => vote(-1)}
           aria-label={t('vote.no')}
-          className="inline-flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg bg-destructive/20 px-3 font-semibold text-destructive transition-[transform,background-color] duration-150 ease-out hover:bg-destructive/30 active:scale-90 disabled:opacity-50 motion-reduce:active:scale-100"
+          className={`${buttonBase} bg-destructive/20 text-destructive hover:bg-destructive/30`}
         >
-          <ThumbsDown size={14} fill="currentColor" />
+          <ThumbsDown size={lg ? 16 : 14} fill="currentColor" />
           {noVotesCount}
         </button>
       </div>
 
       <div
-        className="flex items-center justify-center gap-1.5 border-t border-white/15 pt-1.5 font-semibold text-white/90"
+        className={`flex items-center justify-center border-t border-white/15 font-semibold text-white/90 ${
+          lg ? 'gap-2 pt-2' : 'gap-1.5 pt-1.5'
+        }`}
         aria-label={`${t('vote.net_score')}: ${netScore >= 0 ? '+' : ''}${netScore}`}
       >
-        <ChartNoAxesCombined size={18} aria-hidden="true" />
-        <span className="tabular-nums" aria-hidden="true">
+        <ChartNoAxesCombined size={lg ? 22 : 18} aria-hidden="true" />
+        <span className={`tabular-nums ${lg ? 'text-xl' : ''}`} aria-hidden="true">
           {netScore >= 0 ? '+' : ''}
           {netScore}
         </span>

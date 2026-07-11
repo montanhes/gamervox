@@ -83,5 +83,23 @@
   },
   "footer": {
     "rights": "All rights reserved."
+  },
+  "form": {
+    "tags_label": "Tags",
+    "tag_placeholder": "Type and press Enter...",
+    "tags_hint": "Enter or comma adds. Up to {{max}} tags.",
+    "image_label": "Game cover",
+    "image_pick": "Choose image",
+    "image_hint": "PNG, JPG or WebP, up to 4MB",
+    "image_change": "Change image",
+    "image_recrop": "Adjust crop",
+    "image_required": "Choose a cover image.",
+    "crop_confirm": "Use this crop",
+    "zoom": "Zoom",
+    "social_add": "Add social link",
+    "social_platform": "Platform",
+    "remove": "Remove",
+    "submitting": "Submitting...",
+    "cancel": "Cancel"
   }
 }

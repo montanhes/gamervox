@@ -83,5 +83,23 @@
   },
   "footer": {
     "rights": "Tous droits réservés."
+  },
+  "form": {
+    "tags_label": "Tags",
+    "tag_placeholder": "Saisissez et appuyez sur Entrée...",
+    "tags_hint": "Entrée ou virgule pour ajouter. Jusqu’à {{max}} tags.",
+    "image_label": "Jaquette du jeu",
+    "image_pick": "Choisir une image",
+    "image_hint": "PNG, JPG ou WebP, jusqu’à 4 Mo",
+    "image_change": "Changer d’image",
+    "image_recrop": "Ajuster le cadrage",
+    "image_required": "Choisissez une image de jaquette.",
+    "crop_confirm": "Utiliser ce cadrage",
+    "zoom": "Zoom",
+    "social_add": "Ajouter un réseau social",
+    "social_platform": "Plateforme",
+    "remove": "Supprimer",
+    "submitting": "Envoi...",
+    "cancel": "Annuler"
   }
 }

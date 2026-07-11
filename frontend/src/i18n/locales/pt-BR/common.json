@@ -83,5 +83,23 @@
   },
   "footer": {
     "rights": "Todos os direitos reservados."
+  },
+  "form": {
+    "tags_label": "Tags",
+    "tag_placeholder": "Digite e pressione Enter...",
+    "tags_hint": "Enter ou vírgula adiciona. Até {{max}} tags.",
+    "image_label": "Capa do jogo",
+    "image_pick": "Escolher imagem",
+    "image_hint": "PNG, JPG ou WebP, até 4MB",
+    "image_change": "Trocar imagem",
+    "image_recrop": "Ajustar corte",
+    "image_required": "Escolha uma imagem de capa.",
+    "crop_confirm": "Usar este corte",
+    "zoom": "Zoom",
+    "social_add": "Adicionar rede social",
+    "social_platform": "Plataforma",
+    "remove": "Remover",
+    "submitting": "Enviando...",
+    "cancel": "Cancelar"
   }
 }

@@ -6,13 +6,11 @@ import { Check, Share2 } from 'lucide-react'
 import { fetchGame } from '@/api/games'
 import { VoteButtons } from '@/components/VoteButtons'
 import { CommentSection } from '@/components/CommentSection'
-
-const DESCRIPTION_PREVIEW_LENGTH = 160
+import { getSocialPlatform } from '@/lib/socialPlatforms'
 
 export function GameDetailPage() {
   const { t } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
-  const [expanded, setExpanded] = useState(false)
   const [copied, setCopied] = useState(false)
 
   const { data: game, isLoading } = useQuery({
@@ -31,44 +29,36 @@ export function GameDetailPage() {
   }
 
   return (
-    <div className="mx-auto max-w-7xl p-6">
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[3fr_2fr]">
-        <div className="flex flex-col gap-5 sm:flex-row">
-          <div className="flex flex-col gap-3 sm:w-72 sm:flex-none">
-            {game.image_url && (
-              <img
-                src={game.image_url}
-                alt={game.title}
-                className="aspect-[220/295] w-full rounded-surface border border-border object-cover"
-              />
-            )}
-
-            <VoteButtons
-              slug={game.slug}
-              yesVotesCount={game.yes_votes_count}
-              noVotesCount={game.no_votes_count}
-              netScore={game.net_score}
-              leading={
-                <button
-                  type="button"
-                  onClick={handleShare}
-                  aria-label={copied ? t('game.share_copied') : t('game.share')}
-                  className="inline-flex h-9 w-9 flex-none items-center justify-center rounded-control border border-border-strong text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
-                >
-                  {copied ? <Check size={16} /> : <Share2 size={16} />}
-                </button>
-              }
+    <div>
+      <section className="relative overflow-hidden border-b border-border bg-surface">
+        {game.image_url && (
+          <div aria-hidden="true" className="absolute inset-0">
+            <img
+              src={game.image_url}
+              alt=""
+              className="h-full w-full scale-110 object-cover blur-sm brightness-[0.7] opacity-80"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/45 to-background" />
           </div>
+        )}
 
-          <div className="flex flex-col gap-3">
+        <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 sm:flex-row sm:py-14">
+          {game.image_url && (
+            <img
+              src={game.image_url}
+              alt={game.title}
+              className="aspect-[220/295] w-56 flex-none self-start rounded-surface border border-border object-cover shadow-card-hover"
+            />
+          )}
+
+          <div className="flex min-w-0 flex-col gap-4">
             {game.tags.length > 0 && (
               <div className="flex flex-wrap gap-1.5">
                 {game.tags.map((tag) => (
                   <Link
                     key={tag.id}
                     to={`/?tag=${tag.slug}`}
-                    className="rounded-control border border-primary bg-transparent px-2.5 py-0.5 text-xs text-foreground transition-colors hover:border-primary-hover"
+                    className="rounded-control border border-primary bg-background/40 px-2.5 py-0.5 text-xs text-foreground transition-colors hover:border-primary-hover"
                   >
                     {tag.name}
                   </Link>
@@ -76,40 +66,62 @@ export function GameDetailPage() {
               </div>
             )}
 
-            <h1 className="text-3xl font-bold uppercase tracking-tight">{game.title}</h1>
+            <h1 className="text-4xl font-bold tracking-tight">{game.title}</h1>
 
             <p className="text-sm text-muted-foreground">
               {t('game.by')} <span className="font-medium text-foreground">{game.user.name}</span>
             </p>
 
-            <div>
-              <p className={expanded ? 'max-w-[65ch]' : 'line-clamp-3 max-w-[65ch]'}>{game.description}</p>
-              {game.description.length > DESCRIPTION_PREVIEW_LENGTH && (
-                <button
-                  type="button"
-                  onClick={() => setExpanded((value) => !value)}
-                  className="mt-1 text-sm font-semibold text-primary transition-colors hover:text-primary-hover"
-                >
-                  {expanded ? t('game.read_less') : t('game.read_more')}
-                </button>
-              )}
+            <div className="max-w-sm">
+              <VoteButtons
+                slug={game.slug}
+                yesVotesCount={game.yes_votes_count}
+                noVotesCount={game.no_votes_count}
+                netScore={game.net_score}
+                size="lg"
+                leading={
+                  <button
+                    type="button"
+                    onClick={handleShare}
+                    aria-label={copied ? t('game.share_copied') : t('game.share')}
+                    className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-control border border-border-strong text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                  >
+                    {copied ? <Check size={18} /> : <Share2 size={18} />}
+                  </button>
+                }
+              />
             </div>
 
+            <p className="max-w-[65ch] leading-relaxed">{game.description}</p>
+
             {game.social_links.length > 0 && (
-              <ul className="flex flex-wrap gap-3 text-sm">
-                {game.social_links.map((link) => (
-                  <li key={link.url}>
-                    <a href={link.url} target="_blank" rel="noreferrer" className="text-primary underline">
-                      {link.platform}
-                    </a>
-                  </li>
-                ))}
+              <ul className="flex flex-wrap gap-2">
+                {game.social_links.map((link) => {
+                  const { label, Icon } = getSocialPlatform(link.platform)
+                  return (
+                    <li key={link.url}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-control border border-border-strong px-2.5 py-1 text-xs text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                      >
+                        <Icon size={14} />
+                        {label}
+                      </a>
+                    </li>
+                  )
+                })}
               </ul>
             )}
           </div>
         </div>
+      </section>
 
-        <CommentSection slug={game.slug} />
+      <div className="mx-auto max-w-7xl px-6 py-10">
+        <div className="max-w-3xl">
+          <CommentSection slug={game.slug} />
+        </div>
       </div>
     </div>
   )
