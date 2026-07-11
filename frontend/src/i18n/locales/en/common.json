@@ -32,7 +32,8 @@
     "save": "Save changes",
     "saved": "Profile updated.",
     "username_label": "Username",
-    "username_hint": "Letters, numbers, hyphen and underscore. Your public profile: /u/your-name"
+    "username_hint": "Letters, numbers, hyphen and underscore. Your public profile: /u/your-name",
+    "digest_label": "Receive weekly email digest with trending games"
   },
   "vote": {
     "yes": "Yes",
@@ -131,5 +132,12 @@
     "badge_curator_desc": "Submitted a game with a 50+ vote balance",
     "badge_active_voice": "Active voice",
     "badge_active_voice_desc": "Voted on 100 or more games"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No notifications yet.",
+    "game_approved": "Your game \"{{title}}\" was approved and is on the ranking!",
+    "game_rejected": "Your game \"{{title}}\" was rejected by moderation.",
+    "milestone": "\"{{title}}\" reached a {{milestone}} vote balance!"
   }
 }

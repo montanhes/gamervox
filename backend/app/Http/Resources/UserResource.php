@@ -22,6 +22,7 @@ class UserResource extends JsonResource
             'avatar_url' => $this->avatar_url,
             'is_admin' => $this->is_admin,
             'locale' => $this->locale,
+            'wants_digest' => $this->wants_digest,
         ];
     }
 }

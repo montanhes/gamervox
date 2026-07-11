@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Enums\GameStatus;
 use App\Models\Game;
+use App\Notifications\GameModeratedNotification;
 use App\Services\Moderation\ModerationServiceInterface;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -38,6 +39,8 @@ class ModerateGameJob implements ShouldQueue
             'status' => $result->approved ? GameStatus::Approved : GameStatus::Rejected,
             'moderation_reason' => $result->reason,
         ]);
+
+        $this->game->user->notify(new GameModeratedNotification($this->game->fresh()));
     }
 
     public function failed(Throwable $exception): void

@@ -32,7 +32,8 @@
     "save": "Änderungen speichern",
     "saved": "Profil aktualisiert.",
     "username_label": "Benutzername",
-    "username_hint": "Buchstaben, Zahlen, Bindestrich und Unterstrich. Dein öffentliches Profil: /u/dein-name"
+    "username_hint": "Buchstaben, Zahlen, Bindestrich und Unterstrich. Dein öffentliches Profil: /u/dein-name",
+    "digest_label": "Wöchentlichen E-Mail-Digest mit Trend-Spielen erhalten"
   },
   "vote": {
     "yes": "Ja",
@@ -131,5 +132,12 @@
     "badge_curator_desc": "Ein Spiel mit 50+ Stimmen-Saldo eingereicht",
     "badge_active_voice": "Aktive Stimme",
     "badge_active_voice_desc": "Bei 100 oder mehr Spielen abgestimmt"
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "empty": "Noch keine Benachrichtigungen.",
+    "game_approved": "Dein Spiel \"{{title}}\" wurde genehmigt und ist im Ranking!",
+    "game_rejected": "Dein Spiel \"{{title}}\" wurde von der Moderation abgelehnt.",
+    "milestone": "\"{{title}}\" hat einen Saldo von {{milestone}} Stimmen erreicht!"
   }
 }

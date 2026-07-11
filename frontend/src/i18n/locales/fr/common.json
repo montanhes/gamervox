@@ -32,7 +32,8 @@
     "save": "Enregistrer les modifications",
     "saved": "Profil mis à jour.",
     "username_label": "Nom d'utilisateur",
-    "username_hint": "Lettres, chiffres, tiret et underscore. Votre profil public : /u/votre-nom"
+    "username_hint": "Lettres, chiffres, tiret et underscore. Votre profil public : /u/votre-nom",
+    "digest_label": "Recevoir le résumé hebdomadaire par e-mail avec les jeux en tendance"
   },
   "vote": {
     "yes": "Oui",
@@ -131,5 +132,12 @@
     "badge_curator_desc": "A publié un jeu avec un solde de 50+ votes",
     "badge_active_voice": "Voix active",
     "badge_active_voice_desc": "A voté pour 100 jeux ou plus"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "Aucune notification pour le moment.",
+    "game_approved": "Votre jeu \"{{title}}\" a été approuvé et figure au classement !",
+    "game_rejected": "Votre jeu \"{{title}}\" a été rejeté par la modération.",
+    "milestone": "\"{{title}}\" a atteint un solde de {{milestone}} votes !"
   }
 }

@@ -23,6 +23,7 @@ import { PublicProfilePage } from '@/pages/PublicProfilePage'
 import { GameCard } from '@/components/GameCard'
 import { SearchBar } from '@/components/SearchBar'
 import { UserMenu } from '@/components/UserMenu'
+import { NotificationBell } from '@/components/NotificationBell'
 import { ProfilePage } from '@/pages/ProfilePage'
 
 function Header() {
@@ -51,6 +52,7 @@ function Header() {
               <Link to="/me/following" className="text-muted-foreground transition-colors hover:text-foreground">
                 {t('nav.following')}
               </Link>
+              <NotificationBell />
               <UserMenu user={user} onLogout={() => logout()} />
             </>
           ) : (

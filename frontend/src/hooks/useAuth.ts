@@ -40,7 +40,8 @@ export function useAuth() {
   })
 
   const updateProfileMutation = useMutation({
-    mutationFn: (payload: { name: string; locale: string; username?: string }) => authApi.updateProfile(payload),
+    mutationFn: (payload: { name: string; locale: string; username?: string; wants_digest?: boolean }) =>
+      authApi.updateProfile(payload),
     onSuccess: (user) => queryClient.setQueryData(ME_QUERY_KEY, user),
   })
 

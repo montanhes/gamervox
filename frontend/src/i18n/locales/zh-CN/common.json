@@ -32,7 +32,8 @@
     "save": "保存更改",
     "saved": "个人资料已更新。",
     "username_label": "用户名",
-    "username_hint": "字母、数字、连字符和下划线。你的公开主页：/u/your-name"
+    "username_hint": "字母、数字、连字符和下划线。你的公开主页：/u/your-name",
+    "digest_label": "接收每周热门游戏邮件摘要"
   },
   "vote": {
     "yes": "是",
@@ -131,5 +132,12 @@
     "badge_curator_desc": "发布了票数差50+的游戏",
     "badge_active_voice": "活跃之声",
     "badge_active_voice_desc": "为100个及以上游戏投票"
+  },
+  "notifications": {
+    "title": "通知",
+    "empty": "还没有通知。",
+    "game_approved": "你的游戏\"{{title}}\"已获批准并进入排行榜！",
+    "game_rejected": "你的游戏\"{{title}}\"被审核拒绝。",
+    "milestone": "\"{{title}}\"达到了{{milestone}}票差！"
   }
 }

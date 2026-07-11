@@ -32,7 +32,8 @@
     "save": "変更を保存",
     "saved": "プロフィールを更新しました。",
     "username_label": "ユーザー名",
-    "username_hint": "英数字、ハイフン、アンダースコア。公開プロフィール：/u/your-name"
+    "username_hint": "英数字、ハイフン、アンダースコア。公開プロフィール：/u/your-name",
+    "digest_label": "急上昇ゲームの週刊ダイジェストをメールで受け取る"
   },
   "vote": {
     "yes": "はい",
@@ -131,5 +132,12 @@
     "badge_curator_desc": "50票以上の差があるゲームを投稿",
     "badge_active_voice": "アクティブボイス",
     "badge_active_voice_desc": "100本以上のゲームに投票"
+  },
+  "notifications": {
+    "title": "通知",
+    "empty": "まだ通知はありません。",
+    "game_approved": "「{{title}}」が承認され、ランキングに掲載されました！",
+    "game_rejected": "「{{title}}」はモデレーションで却下されました。",
+    "milestone": "「{{title}}」が{{milestone}}票の差に到達しました！"
   }
 }

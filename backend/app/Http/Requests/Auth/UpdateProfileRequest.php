@@ -33,6 +33,7 @@ class UpdateProfileRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:120'],
             'username' => ['sometimes', 'string', 'min:3', 'max:30', 'alpha_dash', Rule::unique('users', 'username')->ignore($this->user()->id)],
+            'wants_digest' => ['sometimes', 'boolean'],
             'locale' => ['sometimes', 'string', Rule::in(array_keys(config('locales.supported')))],
         ];
     }

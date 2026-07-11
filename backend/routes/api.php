@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\CommentLikeController;
 use App\Http\Controllers\Api\GameFollowController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\GameController;
 use App\Http\Controllers\Api\TagController;
 use App\Http\Controllers\Api\UserProfileController;
@@ -30,6 +31,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/me/games', [GameController::class, 'mine']);
     Route::get('/me/following', [GameFollowController::class, 'index']);
+    Route::get('/me/notifications', [NotificationController::class, 'index']);
+    Route::post('/me/notifications/read', [NotificationController::class, 'markAllRead']);
 
     Route::post('/games', [GameController::class, 'store'])->middleware('throttle:6,1');
     Route::post('/games/{slug}/vote', [VoteController::class, 'store']);

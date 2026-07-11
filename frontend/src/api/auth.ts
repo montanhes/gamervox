@@ -8,6 +8,7 @@ export interface User {
   avatar_url: string | null
   is_admin: boolean
   locale: string
+  wants_digest: boolean
 }
 
 export async function fetchMe(): Promise<User | null> {
@@ -49,6 +50,7 @@ export async function updateProfile(payload: {
   name: string
   locale: string
   username?: string
+  wants_digest?: boolean
 }): Promise<User> {
   const { data } = await api.patch<{ data: User }>('/api/me', payload)
   return data.data

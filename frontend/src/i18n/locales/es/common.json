@@ -32,7 +32,8 @@
     "save": "Guardar cambios",
     "saved": "Perfil actualizado.",
     "username_label": "Nombre de usuario",
-    "username_hint": "Letras, números, guion y guion bajo. Tu perfil público: /u/tu-nombre"
+    "username_hint": "Letras, números, guion y guion bajo. Tu perfil público: /u/tu-nombre",
+    "digest_label": "Recibir resumen semanal por correo con los juegos en tendencia"
   },
   "vote": {
     "yes": "Sí",
@@ -131,5 +132,12 @@
     "badge_curator_desc": "Publicó un juego con saldo de 50+ votos",
     "badge_active_voice": "Voz activa",
     "badge_active_voice_desc": "Votó en 100 o más juegos"
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "empty": "Ninguna notificación todavía.",
+    "game_approved": "¡Tu juego \"{{title}}\" fue aprobado y está en el ranking!",
+    "game_rejected": "Tu juego \"{{title}}\" fue rechazado por la moderación.",
+    "milestone": "¡\"{{title}}\" alcanzó un saldo de {{milestone}} votos!"
   }
 }

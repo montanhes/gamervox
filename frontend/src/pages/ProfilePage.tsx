@@ -45,6 +45,7 @@ function ProfileForm({ user }: { user: User }) {
 
   const [name, setName] = useState(user.name)
   const [username, setUsername] = useState(user.username)
+  const [wantsDigest, setWantsDigest] = useState(user.wants_digest)
   const [error, setError] = useState<string | null>(null)
   const [saved, setSaved] = useState(false)
 
@@ -54,7 +55,12 @@ function ProfileForm({ user }: { user: User }) {
     setSaved(false)
 
     try {
-      await updateProfile({ name, username, locale: i18n.resolvedLanguage ?? i18n.language })
+      await updateProfile({
+        name,
+        username,
+        wants_digest: wantsDigest,
+        locale: i18n.resolvedLanguage ?? i18n.language,
+      })
       setSaved(true)
     } catch (err) {
       const errors = isAxiosError(err) ? err.response?.data?.errors : null
@@ -118,6 +124,16 @@ function ProfileForm({ user }: { user: User }) {
           </div>
           <p className="text-xs text-muted-foreground">{t('profile.username_hint')}</p>
         </div>
+
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={wantsDigest}
+            onChange={(e) => setWantsDigest(e.target.checked)}
+            className="h-4 w-4 accent-[var(--primary)]"
+          />
+          {t('profile.digest_label')}
+        </label>
 
         {error && <p className="text-sm text-destructive">{error}</p>}
         {saved && <p className="text-sm text-success">{t('profile.saved')}</p>}
