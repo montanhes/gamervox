@@ -8,7 +8,11 @@
     "subtitle": "Soumettez des jeux classiques sans remake et votez pour le retour des IP que vous aimez. Le classement est déterminé par le score net de votes de la communauté.",
     "cta_submit": "Soumettre un jeu",
     "cta_login": "Connectez-vous pour voter",
-    "feed_label": "Classement"
+    "feed_label": "Classement",
+    "tab_top": "Top",
+    "tab_trending": "Tendances",
+    "tab_recent": "Nouveaux",
+    "tab_announced": "On a réussi !"
   },
   "nav": {
     "home": "Accueil",

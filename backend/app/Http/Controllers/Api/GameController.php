@@ -22,7 +22,9 @@ class GameController extends Controller
 
     public function index(Request $request): AnonymousResourceCollection
     {
-        $games = Game::query()
+        $sort = $request->input('sort', 'top');
+
+        $query = Game::query()
             ->where('status', GameStatus::Approved)
             ->with('tags')
             ->when($request->string('search')->trim()->isNotEmpty(), function ($query) use ($request) {
@@ -31,12 +33,28 @@ class GameController extends Controller
             ->when($request->filled('tags'), function ($query) use ($request) {
                 $query->whereHas('tags', fn ($q) => $q->whereIn('slug', (array) $request->input('tags')));
             })
-            ->when($request->boolean('announced'), fn ($query) => $query->whereNotNull('announced_at'))
-            ->orderByDesc('net_score')
-            ->orderByDesc('id')
-            ->cursorPaginate(20);
+            ->when($request->boolean('announced'), fn ($query) => $query->whereNotNull('announced_at'));
 
-        return GameResource::collection($games);
+        if ($sort === 'trending') {
+            // Saldo de votos dos últimos 7 dias. Agregado não entra em cursor
+            // pagination, então "em alta" é uma vitrine de tamanho fixo.
+            $games = $query
+                ->withSum(['votes as trending_score' => fn ($q) => $q->where('created_at', '>=', now()->subDays(7))], 'value')
+                ->orderByDesc('trending_score')
+                ->orderByDesc('net_score')
+                ->limit(24)
+                ->get();
+
+            return GameResource::collection($games)->additional(['meta' => ['next_cursor' => null]]);
+        }
+
+        if ($sort === 'recent') {
+            $query->orderByDesc('id');
+        } else {
+            $query->orderByDesc('net_score')->orderByDesc('id');
+        }
+
+        return GameResource::collection($query->cursorPaginate(20));
     }
 
     public function store(StoreGameRequest $request): GameDetailResource|JsonResponse

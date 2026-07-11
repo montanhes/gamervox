@@ -105,16 +105,22 @@ function Footer() {
   )
 }
 
+const FEED_TABS = ['top', 'trending', 'recent', 'announced'] as const
+type FeedTab = (typeof FEED_TABS)[number]
+
 function HomePage() {
   const { t } = useTranslation()
   const { user } = useAuth()
   const [search, setSearch] = useState('')
+  const [tab, setTab] = useState<FeedTab>('top')
   const [searchParams, setSearchParams] = useSearchParams()
   const activeTag = searchParams.get('tag')
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useGamesInfinite(
     search,
     activeTag ? [activeTag] : [],
+    tab === 'announced' ? 'top' : tab,
+    tab === 'announced',
   )
 
   // Query sem filtros: compartilha cache com o feed inicial e mantém o banner
@@ -189,6 +195,25 @@ function HomePage() {
 
       <div className="mx-auto max-w-7xl space-y-4 p-6">
         <SearchBar onSearch={setSearch} />
+
+        <div className="flex flex-wrap gap-1.5" role="tablist" aria-label={t('home.feed_label')}>
+          {FEED_TABS.map((value) => (
+            <button
+              key={value}
+              type="button"
+              role="tab"
+              aria-selected={tab === value}
+              onClick={() => setTab(value)}
+              className={`rounded-control px-3 py-1.5 text-sm font-medium transition-colors ${
+                tab === value
+                  ? 'bg-primary text-white'
+                  : 'text-muted-foreground hover:bg-surface hover:text-foreground'
+              }`}
+            >
+              {t(`home.tab_${value}`)}
+            </button>
+          ))}
+        </div>
 
         {activeTag && (
           <button

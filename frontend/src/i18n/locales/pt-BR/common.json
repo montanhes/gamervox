@@ -8,7 +8,11 @@
     "subtitle": "Cadastre jogos clássicos sem remake e vote pelo retorno das IPs que você ama. O ranking é pelo saldo de votos da comunidade.",
     "cta_submit": "Cadastrar um jogo",
     "cta_login": "Entrar para votar",
-    "feed_label": "Ranking"
+    "feed_label": "Ranking",
+    "tab_top": "Top",
+    "tab_trending": "Em alta",
+    "tab_recent": "Novos",
+    "tab_announced": "Conseguimos!"
   },
   "nav": {
     "home": "Início",

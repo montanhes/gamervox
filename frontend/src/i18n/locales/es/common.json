@@ -8,7 +8,11 @@
     "subtitle": "Envía juegos clásicos sin remakes y vota por el regreso de las IPs que amas. El ranking se basa en el saldo neto de votos de la comunidad.",
     "cta_submit": "Enviar un juego",
     "cta_login": "Inicia sesión para votar",
-    "feed_label": "Ranking"
+    "feed_label": "Ranking",
+    "tab_top": "Top",
+    "tab_trending": "Tendencias",
+    "tab_recent": "Nuevos",
+    "tab_announced": "¡Lo logramos!"
   },
   "nav": {
     "home": "Inicio",

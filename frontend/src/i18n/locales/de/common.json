@@ -8,7 +8,11 @@
     "subtitle": "Reiche klassische Spiele ohne Remakes ein und stimme für die Rückkehr der IPs ab, die du liebst. Das Ranking basiert auf dem Netto-Stimmensaldo der Community.",
     "cta_submit": "Ein Spiel einreichen",
     "cta_login": "Anmelden, um abzustimmen",
-    "feed_label": "Rangliste"
+    "feed_label": "Rangliste",
+    "tab_top": "Top",
+    "tab_trending": "Im Trend",
+    "tab_recent": "Neu",
+    "tab_announced": "Geschafft!"
   },
   "nav": {
     "home": "Startseite",

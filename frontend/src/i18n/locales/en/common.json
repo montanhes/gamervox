@@ -8,7 +8,11 @@
     "subtitle": "Submit classic games without remakes and vote for the return of the IPs you love. The ranking is driven by the community's net vote score.",
     "cta_submit": "Submit a game",
     "cta_login": "Log in to vote",
-    "feed_label": "Ranking"
+    "feed_label": "Ranking",
+    "tab_top": "Top",
+    "tab_trending": "Trending",
+    "tab_recent": "New",
+    "tab_announced": "We did it!"
   },
   "nav": {
     "home": "Home",

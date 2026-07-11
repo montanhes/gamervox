@@ -8,7 +8,11 @@
     "subtitle": "提交没有重制版的经典游戏，为您喜爱的 IP 回归投票。排名由社区的净投票分数决定。",
     "cta_submit": "提交游戏",
     "cta_login": "登录以投票",
-    "feed_label": "排行榜"
+    "feed_label": "排行榜",
+    "tab_top": "排行",
+    "tab_trending": "热门",
+    "tab_recent": "最新",
+    "tab_announced": "我们做到了！"
   },
   "nav": {
     "home": "首页",

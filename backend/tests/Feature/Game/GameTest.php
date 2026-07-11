@@ -6,6 +6,7 @@ use App\Enums\GameStatus;
 use App\Jobs\ModerateGameJob;
 use App\Models\Game;
 use App\Models\User;
+use App\Models\Vote;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Queue;
@@ -94,6 +95,35 @@ class GameTest extends TestCase
 
         $confirmed->assertCreated();
         $confirmed->assertJsonPath('data.slug', 'breath-of-fire-2');
+    }
+
+    public function test_trending_sort_orders_by_recent_vote_balance(): void
+    {
+        $stale = Game::factory()->create(['status' => GameStatus::Approved, 'net_score' => 100]);
+        $hot = Game::factory()->create(['status' => GameStatus::Approved, 'net_score' => 1]);
+
+        // Jogo consagrado: votos antigos, fora da janela de 7 dias.
+        Vote::factory()->count(3)->for($stale)->create(['value' => 1, 'created_at' => now()->subDays(30)]);
+        // Jogo em alta: votos recentes.
+        Vote::factory()->count(2)->for($hot)->create(['value' => 1, 'created_at' => now()->subDay()]);
+
+        $response = $this->getJson('/api/games?sort=trending');
+
+        $response->assertOk();
+        $this->assertSame($hot->slug, $response->json('data.0.slug'));
+        $this->assertNull($response->json('meta.next_cursor'));
+    }
+
+    public function test_recent_sort_orders_by_newest_first(): void
+    {
+        $old = Game::factory()->create(['status' => GameStatus::Approved, 'net_score' => 100]);
+        $new = Game::factory()->create(['status' => GameStatus::Approved, 'net_score' => 1]);
+
+        $response = $this->getJson('/api/games?sort=recent');
+
+        $response->assertOk();
+        $this->assertSame($new->slug, $response->json('data.0.slug'));
+        $this->assertSame($old->slug, $response->json('data.1.slug'));
     }
 
     public function test_announced_filter_returns_only_announced_games(): void

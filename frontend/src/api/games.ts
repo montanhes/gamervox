@@ -33,16 +33,22 @@ export interface GamesPage {
   }
 }
 
+export type GameSort = 'top' | 'trending' | 'recent'
+
 export async function fetchGames(params: {
   cursor?: string
   search?: string
   tags?: string[]
+  sort?: GameSort
+  announced?: boolean
 }): Promise<GamesPage> {
   const { data } = await api.get<GamesPage>('/api/games', {
     params: {
       cursor: params.cursor,
       search: params.search || undefined,
       tags: params.tags?.length ? params.tags : undefined,
+      sort: params.sort && params.sort !== 'top' ? params.sort : undefined,
+      announced: params.announced ? 1 : undefined,
     },
   })
   return data

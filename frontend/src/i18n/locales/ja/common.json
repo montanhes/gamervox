@@ -8,7 +8,11 @@
     "subtitle": "リメイクや続編のないクラシックゲームを投稿し、あなたが愛するIPの復活に投票しましょう。ランキングはコミュニティの純投票スコアによって決まります。",
     "cta_submit": "ゲームを投稿する",
     "cta_login": "投票するにはログイン",
-    "feed_label": "ランキング"
+    "feed_label": "ランキング",
+    "tab_top": "トップ",
+    "tab_trending": "急上昇",
+    "tab_recent": "新着",
+    "tab_announced": "実現！"
   },
   "nav": {
     "home": "ホーム",
