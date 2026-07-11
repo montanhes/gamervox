@@ -22,7 +22,8 @@
     "profile": "Profil",
     "login": "Anmelden",
     "logout": "Abmelden",
-    "following": "Folge ich"
+    "following": "Folge ich",
+    "cup": "Cup"
   },
   "profile": {
     "title": "Profil",
@@ -116,7 +117,8 @@
     "social_platform": "Plattform",
     "remove": "Entfernen",
     "submitting": "Wird gesendet...",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "autofill_use_cover": "Dieses Cover verwenden"
   },
   "profile_public": {
     "member_since": "Mitglied seit {{date}}",
@@ -139,5 +141,16 @@
     "game_approved": "Dein Spiel \"{{title}}\" wurde genehmigt und ist im Ranking!",
     "game_rejected": "Dein Spiel \"{{title}}\" wurde von der Moderation abgelehnt.",
     "milestone": "\"{{title}}\" hat einen Saldo von {{milestone}} Stimmen erreicht!"
+  },
+  "cup": {
+    "title": "Remake-Cup",
+    "empty": "Gerade läuft kein Cup. Bleib dran!",
+    "round": "Runde",
+    "semifinals": "Halbfinale",
+    "final": "Finale",
+    "champion": "Community-Champion",
+    "vote": "Abstimmen",
+    "voted": "Abgestimmt",
+    "round_ends": "Runde endet am {{date}}"
   }
 }

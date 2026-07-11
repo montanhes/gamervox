@@ -1,10 +1,19 @@
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { isAxiosError } from 'axios'
-import { Plus, X } from 'lucide-react'
-import { submitGame, type Game, type SocialLinkInput } from '@/api/games'
+import { useDebounce } from 'use-debounce'
+import { Plus, Sparkles, X } from 'lucide-react'
+import {
+  fetchLookupImage,
+  lookupGameDetail,
+  lookupGames,
+  submitGame,
+  type Game,
+  type GameLookupResult,
+  type SocialLinkInput,
+} from '@/api/games'
 import { TagInput } from '@/components/TagInput'
 import { ImageCropInput } from '@/components/ImageCropInput'
 import { SOCIAL_PLATFORMS } from '@/lib/socialPlatforms'
@@ -33,6 +42,44 @@ export function SubmitGamePage() {
   const [image, setImage] = useState<File | null>(null)
   const [socialLinks, setSocialLinks] = useState<SocialLinkInput[]>([])
   const [similarGames, setSimilarGames] = useState<Game[] | null>(null)
+
+  // Autofill via RAWG: sugestões pelo título e capa importável.
+  const [titleFocused, setTitleFocused] = useState(false)
+  const [suggestedCover, setSuggestedCover] = useState<string | null>(null)
+  const [importedCover, setImportedCover] = useState<File | null>(null)
+  const [coverKey, setCoverKey] = useState(0)
+  const [importingCover, setImportingCover] = useState(false)
+  const [debouncedTitle] = useDebounce(title.trim(), 500)
+
+  const { data: suggestions = [] } = useQuery({
+    queryKey: ['game-lookup', debouncedTitle],
+    queryFn: () => lookupGames(debouncedTitle),
+    enabled: titleFocused && debouncedTitle.length >= 3,
+    staleTime: 60_000,
+  })
+
+  async function applySuggestion(suggestion: GameLookupResult) {
+    setTitleFocused(false)
+    setTitle(suggestion.name)
+    setSuggestedCover(suggestion.image_url)
+
+    const detail = await lookupGameDetail(suggestion.id)
+    if (detail.description) {
+      setDescription(detail.description.slice(0, DESCRIPTION_MAX))
+    }
+  }
+
+  async function importSuggestedCover() {
+    if (!suggestedCover) return
+    setImportingCover(true)
+    try {
+      const file = await fetchLookupImage(suggestedCover)
+      setImportedCover(file)
+      setCoverKey((k) => k + 1)
+    } finally {
+      setImportingCover(false)
+    }
+  }
 
   const mutation = useMutation({
     mutationFn: (confirmDuplicate: boolean) => {
@@ -95,15 +142,45 @@ export function SubmitGamePage() {
               {title.length}/{TITLE_MAX}
             </span>
           </label>
-          <input
-            id="game-title"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            maxLength={TITLE_MAX}
-            className={inputClass}
-          />
+          <div className="relative">
+            <input
+              id="game-title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              onFocus={() => setTitleFocused(true)}
+              onBlur={() => setTitleFocused(false)}
+              required
+              maxLength={TITLE_MAX}
+              autoComplete="off"
+              className={inputClass}
+            />
+            {titleFocused && suggestions.length > 0 && (
+              <ul className="absolute z-20 mt-1 w-full overflow-hidden rounded-control border border-border-strong bg-surface shadow-card-hover">
+                {suggestions.map((suggestion) => (
+                  <li key={suggestion.id}>
+                    <button
+                      type="button"
+                      // onMouseDown pra rodar antes do blur do input
+                      onMouseDown={(e) => {
+                        e.preventDefault()
+                        applySuggestion(suggestion)
+                      }}
+                      className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-primary/10"
+                    >
+                      <Sparkles size={13} className="flex-none text-primary" aria-hidden="true" />
+                      <span className="truncate">{suggestion.name}</span>
+                      {suggestion.released && (
+                        <span className="ml-auto flex-none text-xs text-muted-foreground">
+                          {suggestion.released.slice(0, 4)}
+                        </span>
+                      )}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <FieldError messages={fieldErrors.title} />
         </div>
 
@@ -137,7 +214,24 @@ export function SubmitGamePage() {
 
         <div>
           <span className="mb-1 block text-sm font-medium">{t('form.image_label')}</span>
-          <ImageCropInput onChange={setImage} />
+          {suggestedCover && (
+            <div className="mb-2 flex items-center gap-3 rounded-control border border-border-strong bg-background p-2">
+              <img
+                src={suggestedCover}
+                alt=""
+                className="h-14 w-24 flex-none rounded-control object-cover"
+              />
+              <button
+                type="button"
+                onClick={importSuggestedCover}
+                disabled={importingCover}
+                className="rounded-control border border-primary px-3 py-1.5 text-sm text-foreground transition-colors hover:bg-primary/10 disabled:opacity-50"
+              >
+                {importingCover ? t('game.loading') : t('form.autofill_use_cover')}
+              </button>
+            </div>
+          )}
+          <ImageCropInput key={coverKey} initialFile={importedCover} onChange={setImage} />
           <FieldError messages={fieldErrors.image} />
         </div>
 

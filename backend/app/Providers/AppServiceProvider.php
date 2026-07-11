@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Services\Moderation\GeminiModerationService;
+use App\Services\Lookup\GameLookupServiceInterface;
+use App\Services\Lookup\RawgGameLookupService;
 use App\Services\Moderation\ModerationServiceInterface;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(ModerationServiceInterface::class, GeminiModerationService::class);
+        $this->app->bind(GameLookupServiceInterface::class, RawgGameLookupService::class);
     }
 
     /**

@@ -10,3 +10,4 @@ Artisan::command('inspire', function () {
 use Illuminate\Support\Facades\Schedule;
 
 Schedule::command('gamervox:send-weekly-digest')->weeklyOn(1, '12:00');
+Schedule::command('gamervox:cup-advance')->hourly();

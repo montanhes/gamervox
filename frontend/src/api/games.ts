@@ -147,3 +147,34 @@ export async function fetchUserProfile(username: string): Promise<UserProfile> {
   const { data } = await api.get<{ data: UserProfile }>(`/api/users/${username}`)
   return data.data
 }
+
+export interface GameLookupResult {
+  id: number
+  name: string
+  released: string | null
+  image_url: string | null
+}
+
+export async function lookupGames(search: string): Promise<GameLookupResult[]> {
+  const { data } = await api.get<{ data: GameLookupResult[] }>('/api/game-lookup', {
+    params: { search },
+  })
+  return data.data
+}
+
+export async function lookupGameDetail(
+  id: number,
+): Promise<GameLookupResult & { description: string | null }> {
+  const { data } = await api.get<{ data: GameLookupResult & { description: string | null } }>(
+    `/api/game-lookup/${id}`,
+  )
+  return data.data
+}
+
+export async function fetchLookupImage(url: string): Promise<File> {
+  const { data } = await api.get<Blob>('/api/game-lookup/image', {
+    params: { url },
+    responseType: 'blob',
+  })
+  return new File([data], 'cover.jpg', { type: data.type || 'image/jpeg' })
+}

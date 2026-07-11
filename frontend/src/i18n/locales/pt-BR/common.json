@@ -22,7 +22,8 @@
     "profile": "Perfil",
     "login": "Entrar",
     "logout": "Sair",
-    "following": "Seguindo"
+    "following": "Seguindo",
+    "cup": "Copa"
   },
   "profile": {
     "title": "Perfil",
@@ -116,7 +117,8 @@
     "social_platform": "Plataforma",
     "remove": "Remover",
     "submitting": "Enviando...",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "autofill_use_cover": "Usar esta capa"
   },
   "profile_public": {
     "member_since": "Membro desde {{date}}",
@@ -139,5 +141,16 @@
     "game_approved": "Seu jogo \"{{title}}\" foi aprovado e está no ranking!",
     "game_rejected": "Seu jogo \"{{title}}\" foi rejeitado pela moderação.",
     "milestone": "\"{{title}}\" alcançou {{milestone}} votos de saldo!"
+  },
+  "cup": {
+    "title": "Copa dos Remakes",
+    "empty": "Nenhuma copa rolando no momento. Fique de olho!",
+    "round": "Rodada",
+    "semifinals": "Semifinais",
+    "final": "Final",
+    "champion": "Campeão da comunidade",
+    "vote": "Votar",
+    "voted": "Votado",
+    "round_ends": "Rodada termina em {{date}}"
   }
 }

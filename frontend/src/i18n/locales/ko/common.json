@@ -22,7 +22,8 @@
     "profile": "프로필",
     "login": "로그인",
     "logout": "로그아웃",
-    "following": "팔로잉"
+    "following": "팔로잉",
+    "cup": "컵"
   },
   "profile": {
     "title": "프로필",
@@ -116,7 +117,8 @@
     "social_platform": "플랫폼",
     "remove": "삭제",
     "submitting": "제출 중...",
-    "cancel": "취소"
+    "cancel": "취소",
+    "autofill_use_cover": "이 커버 사용"
   },
   "profile_public": {
     "member_since": "{{date}}부터 회원",
@@ -139,5 +141,16 @@
     "game_approved": "게임 \"{{title}}\"이(가) 승인되어 랭킹에 올랐습니다!",
     "game_rejected": "게임 \"{{title}}\"이(가) 검토에서 거부되었습니다.",
     "milestone": "\"{{title}}\"이(가) {{milestone}}표 균형에 도달했습니다!"
+  },
+  "cup": {
+    "title": "리메이크 컵",
+    "empty": "지금 진행 중인 컵이 없습니다. 기대해 주세요!",
+    "round": "라운드",
+    "semifinals": "준결승",
+    "final": "결승",
+    "champion": "커뮤니티 챔피언",
+    "vote": "투표",
+    "voted": "투표함",
+    "round_ends": "라운드 종료: {{date}}"
   }
 }

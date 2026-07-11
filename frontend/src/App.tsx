@@ -19,6 +19,7 @@ import { SubmitGamePage } from '@/pages/SubmitGamePage'
 import { GameDetailPage } from '@/pages/GameDetailPage'
 import { MyGamesPage } from '@/pages/MyGamesPage'
 import { FollowingPage } from '@/pages/FollowingPage'
+import { CupPage } from '@/pages/CupPage'
 import { PublicProfilePage } from '@/pages/PublicProfilePage'
 import { GameCard } from '@/components/GameCard'
 import { SearchBar } from '@/components/SearchBar'
@@ -38,6 +39,9 @@ function Header() {
 
       {!isLoading && (
         <nav className="flex flex-wrap items-center gap-5 text-sm">
+          <Link to="/cup" className="text-muted-foreground transition-colors hover:text-foreground">
+            {t('nav.cup')}
+          </Link>
           {user ? (
             <>
               <Link to="/" className="text-muted-foreground transition-colors hover:text-foreground">
@@ -273,6 +277,7 @@ function App() {
           <Route path="/games/:slug" element={<GameDetailPage />} />
           <Route path="/me/games" element={<MyGamesPage />} />
           <Route path="/me/following" element={<FollowingPage />} />
+          <Route path="/cup" element={<CupPage />} />
           <Route path="/u/:username" element={<PublicProfilePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/login" element={<LoginPage />} />

@@ -38,7 +38,9 @@ class UserProfileTest extends TestCase
 
     public function test_badges_are_computed_from_activity(): void
     {
-        $user = User::factory()->create();
+        // id fixo: auto-increment acumula ao rodar a suíte inteira e o badge
+        // pioneer depende de id <= 100.
+        $user = User::factory()->create(['id' => 42]);
         Game::factory()->count(5)->for($user)->create(['status' => GameStatus::Approved]);
         Game::factory()->for($user)->create(['status' => GameStatus::Approved, 'net_score' => 60]);
 

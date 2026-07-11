@@ -42,13 +42,22 @@ async function cropToFile(src: string, area: Area): Promise<File> {
   return new File([blob], 'cover.webp', { type: 'image/webp' })
 }
 
-export function ImageCropInput({ onChange }: { onChange: (file: File | null) => void }) {
+export function ImageCropInput({
+  onChange,
+  initialFile,
+}: {
+  onChange: (file: File | null) => void
+  // Capa vinda do autofill; o componente deve ser remontado (key) quando mudar.
+  initialFile?: File | null
+}) {
   const { t } = useTranslation()
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const [source, setSource] = useState<string | null>(null)
+  const [source, setSource] = useState<string | null>(() =>
+    initialFile ? URL.createObjectURL(initialFile) : null,
+  )
   const [preview, setPreview] = useState<string | null>(null)
-  const [cropping, setCropping] = useState(false)
+  const [cropping, setCropping] = useState(!!initialFile)
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState(1)
   const [areaPixels, setAreaPixels] = useState<Area | null>(null)

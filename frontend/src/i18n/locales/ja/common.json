@@ -22,7 +22,8 @@
     "profile": "プロフィール",
     "login": "ログイン",
     "logout": "ログアウト",
-    "following": "フォロー中"
+    "following": "フォロー中",
+    "cup": "カップ"
   },
   "profile": {
     "title": "プロフィール",
@@ -116,7 +117,8 @@
     "social_platform": "プラットフォーム",
     "remove": "削除",
     "submitting": "送信中...",
-    "cancel": "キャンセル"
+    "cancel": "キャンセル",
+    "autofill_use_cover": "このカバーを使う"
   },
   "profile_public": {
     "member_since": "{{date}}からのメンバー",
@@ -139,5 +141,16 @@
     "game_approved": "「{{title}}」が承認され、ランキングに掲載されました！",
     "game_rejected": "「{{title}}」はモデレーションで却下されました。",
     "milestone": "「{{title}}」が{{milestone}}票の差に到達しました！"
+  },
+  "cup": {
+    "title": "リメイクカップ",
+    "empty": "現在開催中のカップはありません。お楽しみに！",
+    "round": "ラウンド",
+    "semifinals": "準決勝",
+    "final": "決勝",
+    "champion": "コミュニティチャンピオン",
+    "vote": "投票",
+    "voted": "投票済み",
+    "round_ends": "ラウンド終了：{{date}}"
   }
 }

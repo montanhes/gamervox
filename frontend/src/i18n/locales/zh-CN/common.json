@@ -22,7 +22,8 @@
     "profile": "个人资料",
     "login": "登录",
     "logout": "退出登录",
-    "following": "关注中"
+    "following": "关注中",
+    "cup": "杯赛"
   },
   "profile": {
     "title": "个人资料",
@@ -116,7 +117,8 @@
     "social_platform": "平台",
     "remove": "删除",
     "submitting": "提交中...",
-    "cancel": "取消"
+    "cancel": "取消",
+    "autofill_use_cover": "使用此封面"
   },
   "profile_public": {
     "member_since": "{{date}}加入",
@@ -139,5 +141,16 @@
     "game_approved": "你的游戏\"{{title}}\"已获批准并进入排行榜！",
     "game_rejected": "你的游戏\"{{title}}\"被审核拒绝。",
     "milestone": "\"{{title}}\"达到了{{milestone}}票差！"
+  },
+  "cup": {
+    "title": "重制杯",
+    "empty": "目前没有进行中的杯赛。敬请期待！",
+    "round": "轮次",
+    "semifinals": "半决赛",
+    "final": "决赛",
+    "champion": "社区冠军",
+    "vote": "投票",
+    "voted": "已投票",
+    "round_ends": "本轮截止：{{date}}"
   }
 }
