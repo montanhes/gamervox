@@ -80,5 +80,8 @@
     "load_more_replies": "Load more replies",
     "empty": "No comments yet. Be the first!",
     "error": "We couldn't post your comment. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved."
   }
 }

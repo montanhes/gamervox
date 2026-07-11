@@ -80,5 +80,8 @@
     "load_more_replies": "Weitere Antworten laden",
     "empty": "Noch keine Kommentare. Sei der Erste!",
     "error": "Dein Kommentar konnte nicht veröffentlicht werden. Bitte versuche es erneut."
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten."
   }
 }
