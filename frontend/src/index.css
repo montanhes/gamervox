@@ -16,6 +16,8 @@
   --destructive-foreground: #0b0e11;
   --success: #9d4edd;
   --success-foreground: #0b0e11;
+  --announced: #f5c518;
+  --announced-foreground: #0b0e11;
 
   --shadow-card-hover: 0 12px 24px rgb(0 0 0 / 0.45);
 
@@ -38,6 +40,8 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-announced: var(--announced);
+  --color-announced-foreground: var(--announced-foreground);
   --font-body: var(--font-body);
   --radius-control: 6px;
   --radius-surface: 10px;

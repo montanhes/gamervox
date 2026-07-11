@@ -31,6 +31,7 @@ class GameController extends Controller
             ->when($request->filled('tags'), function ($query) use ($request) {
                 $query->whereHas('tags', fn ($q) => $q->whereIn('slug', (array) $request->input('tags')));
             })
+            ->when($request->boolean('announced'), fn ($query) => $query->whereNotNull('announced_at'))
             ->orderByDesc('net_score')
             ->orderByDesc('id')
             ->cursorPaginate(20);

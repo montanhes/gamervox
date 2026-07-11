@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Admin\GameModerationController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\CommentLikeController;
 use App\Http\Controllers\Api\GameController;
 use App\Http\Controllers\Api\TagController;
 use App\Http\Controllers\Api\VoteController;
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/games/{slug}/vote', [VoteController::class, 'store']);
     Route::delete('/games/{slug}/vote', [VoteController::class, 'destroy']);
     Route::post('/games/{slug}/comments', [CommentController::class, 'store'])->middleware('throttle:20,1');
+    Route::post('/comments/{comment}/like', [CommentLikeController::class, 'toggle'])->middleware('throttle:60,1');
 
     Route::middleware('admin')->prefix('admin')->group(function () {
         Route::patch('/games/{game}/moderate', [GameModerationController::class, 'update']);

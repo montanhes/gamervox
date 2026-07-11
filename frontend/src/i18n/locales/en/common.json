@@ -30,7 +30,9 @@
   "vote": {
     "yes": "Yes",
     "no": "No",
-    "net_score": "Score"
+    "net_score": "Score",
+    "share_vote": "Share my vote on X",
+    "share_text": "I voted for {{title}} to come back on Gamervox! Cast your vote too:"
   },
   "status": {
     "pending": "Under review",
@@ -64,7 +66,8 @@
     "read_more": "Read more",
     "read_less": "Read less",
     "share": "Copy link",
-    "share_copied": "Link copied"
+    "share_copied": "Link copied",
+    "announced": "Announced!"
   },
   "comments": {
     "title": "Comments",
@@ -79,7 +82,9 @@
     "load_more": "Load more comments",
     "load_more_replies": "Load more replies",
     "empty": "No comments yet. Be the first!",
-    "error": "We couldn't post your comment. Please try again."
+    "error": "We couldn't post your comment. Please try again.",
+    "like": "Like",
+    "unlike": "Unlike"
   },
   "footer": {
     "rights": "All rights reserved."

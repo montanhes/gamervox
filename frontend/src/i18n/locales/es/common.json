@@ -30,7 +30,9 @@
   "vote": {
     "yes": "Sí",
     "no": "No",
-    "net_score": "Puntuación"
+    "net_score": "Puntuación",
+    "share_vote": "Compartir mi voto en X",
+    "share_text": "¡Voté por el regreso de {{title}} en Gamervox! Vota tú también:"
   },
   "status": {
     "pending": "En revisión",
@@ -64,7 +66,8 @@
     "read_more": "Leer más",
     "read_less": "Leer menos",
     "share": "Copiar enlace",
-    "share_copied": "Enlace copiado"
+    "share_copied": "Enlace copiado",
+    "announced": "¡Anunciado!"
   },
   "comments": {
     "title": "Comentarios",
@@ -79,7 +82,9 @@
     "load_more": "Cargar más comentarios",
     "load_more_replies": "Cargar más respuestas",
     "empty": "Aún no hay comentarios. ¡Sé el primero!",
-    "error": "No pudimos publicar tu comentario. Por favor, inténtalo de nuevo."
+    "error": "No pudimos publicar tu comentario. Por favor, inténtalo de nuevo.",
+    "like": "Me gusta",
+    "unlike": "Quitar me gusta"
   },
   "footer": {
     "rights": "Todos los derechos reservados."

@@ -20,6 +20,8 @@ class CommentResource extends JsonResource
             'created_at' => $this->created_at,
             'parent_id' => $this->parent_id,
             'replies_count' => $this->replies_count ?? 0,
+            'likes_count' => $this->likes_count ?? 0,
+            'liked_by_me' => (bool) ($this->liked_by_me ?? false),
             'user' => new UserResource($this->whenLoaded('user')),
         ];
     }

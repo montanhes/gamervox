@@ -96,6 +96,19 @@ class GameTest extends TestCase
         $confirmed->assertJsonPath('data.slug', 'breath-of-fire-2');
     }
 
+    public function test_announced_filter_returns_only_announced_games(): void
+    {
+        Game::factory()->create(['status' => GameStatus::Approved]);
+        $announced = Game::factory()->create(['status' => GameStatus::Approved, 'announced_at' => now()]);
+
+        $response = $this->getJson('/api/games?announced=1');
+
+        $response->assertOk();
+        $this->assertCount(1, $response->json('data'));
+        $this->assertSame($announced->slug, $response->json('data.0.slug'));
+        $this->assertTrue($response->json('data.0.is_announced'));
+    }
+
     public function test_guest_cannot_submit_a_game(): void
     {
         $this->postJson('/api/games', [])->assertUnauthorized();

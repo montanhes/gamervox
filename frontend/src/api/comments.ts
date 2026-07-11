@@ -6,6 +6,8 @@ export interface Comment {
   created_at: string
   parent_id: number | null
   replies_count: number
+  likes_count: number
+  liked_by_me: boolean
   user: { id: number; name: string; avatar_url: string | null }
 }
 
@@ -34,4 +36,13 @@ export async function postComment(slug: string, body: string, parentId?: number 
     parent_id: parentId ?? null,
   })
   return data.data
+}
+
+export async function toggleCommentLike(
+  commentId: number,
+): Promise<{ liked: boolean; likes_count: number }> {
+  const { data } = await api.post<{ liked: boolean; likes_count: number }>(
+    `/api/comments/${commentId}/like`,
+  )
+  return data
 }

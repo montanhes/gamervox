@@ -30,7 +30,9 @@
   "vote": {
     "yes": "是",
     "no": "否",
-    "net_score": "得分"
+    "net_score": "得分",
+    "share_vote": "在X上分享我的投票",
+    "share_text": "我在Gamervox为{{title}}的回归投了票！你也来投票吧："
   },
   "status": {
     "pending": "审核中",
@@ -64,7 +66,8 @@
     "read_more": "阅读更多",
     "read_less": "收起",
     "share": "复制链接",
-    "share_copied": "链接已复制"
+    "share_copied": "链接已复制",
+    "announced": "已公布！"
   },
   "comments": {
     "title": "评论",
@@ -79,7 +82,9 @@
     "load_more": "加载更多评论",
     "load_more_replies": "加载更多回复",
     "empty": "暂无评论。快来抢占第一个吧！",
-    "error": "无法发布您的评论。请重试。"
+    "error": "无法发布您的评论。请重试。",
+    "like": "赞",
+    "unlike": "取消赞"
   },
   "footer": {
     "rights": "保留所有权利。"

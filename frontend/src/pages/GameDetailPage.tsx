@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
-import { Check, Share2 } from 'lucide-react'
+import { Check, PartyPopper, Share2 } from 'lucide-react'
 import { fetchGame } from '@/api/games'
 import { VoteButtons } from '@/components/VoteButtons'
 import { CommentSection } from '@/components/CommentSection'
 import { getSocialPlatform } from '@/lib/socialPlatforms'
+import { XIcon } from '@/components/SocialIcons'
 
 export function GameDetailPage() {
   const { t } = useTranslation()
@@ -66,7 +67,15 @@ export function GameDetailPage() {
               </div>
             )}
 
-            <h1 className="text-4xl font-bold tracking-tight">{game.title}</h1>
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="text-4xl font-bold tracking-tight">{game.title}</h1>
+              {game.is_announced && (
+                <span className="inline-flex items-center gap-1.5 rounded-control bg-announced px-2.5 py-1 text-sm font-semibold text-announced-foreground">
+                  <PartyPopper size={15} aria-hidden="true" />
+                  {t('game.announced')}
+                </span>
+              )}
+            </div>
 
             <p className="text-sm text-muted-foreground">
               {t('game.by')} <span className="font-medium text-foreground">{game.user.name}</span>
@@ -80,14 +89,28 @@ export function GameDetailPage() {
                 netScore={game.net_score}
                 size="lg"
                 leading={
-                  <button
-                    type="button"
-                    onClick={handleShare}
-                    aria-label={copied ? t('game.share_copied') : t('game.share')}
-                    className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-control border border-border-strong text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
-                  >
-                    {copied ? <Check size={18} /> : <Share2 size={18} />}
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      onClick={handleShare}
+                      aria-label={copied ? t('game.share_copied') : t('game.share')}
+                      className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-control border border-border-strong text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                    >
+                      {copied ? <Check size={18} /> : <Share2 size={18} />}
+                    </button>
+                    <a
+                      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                        t('vote.share_text', { title: game.title }),
+                      )}&url=${encodeURIComponent(window.location.href)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={t('vote.share_vote')}
+                      title={t('vote.share_vote')}
+                      className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-control border border-border-strong text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                    >
+                      <XIcon size={16} />
+                    </a>
+                  </>
                 }
               />
             </div>

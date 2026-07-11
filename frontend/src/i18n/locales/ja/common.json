@@ -30,7 +30,9 @@
   "vote": {
     "yes": "はい",
     "no": "いいえ",
-    "net_score": "スコア"
+    "net_score": "スコア",
+    "share_vote": "Xで投票をシェア",
+    "share_text": "Gamervoxで{{title}}の復活に投票しました！あなたも投票しよう："
   },
   "status": {
     "pending": "審査中",
@@ -64,7 +66,8 @@
     "read_more": "もっと見る",
     "read_less": "閉じる",
     "share": "リンクをコピー",
-    "share_copied": "リンクをコピーしました"
+    "share_copied": "リンクをコピーしました",
+    "announced": "発表済み！"
   },
   "comments": {
     "title": "コメント",
@@ -79,7 +82,9 @@
     "load_more": "コメントをさらに読み込む",
     "load_more_replies": "返信をさらに読み込む",
     "empty": "まだコメントがありません。最初のコメントを投稿しましょう!",
-    "error": "コメントを投稿できませんでした。もう一度お試しください。"
+    "error": "コメントを投稿できませんでした。もう一度お試しください。",
+    "like": "いいね",
+    "unlike": "いいねを取り消す"
   },
   "footer": {
     "rights": "すべての権利を保有しています。"

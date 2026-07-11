@@ -30,7 +30,9 @@
   "vote": {
     "yes": "예",
     "no": "아니요",
-    "net_score": "점수"
+    "net_score": "점수",
+    "share_vote": "X에 내 투표 공유",
+    "share_text": "Gamervox에서 {{title}}의 귀환에 투표했습니다! 여러분도 투표하세요:"
   },
   "status": {
     "pending": "검토 중",
@@ -64,7 +66,8 @@
     "read_more": "더 보기",
     "read_less": "간략히 보기",
     "share": "링크 복사",
-    "share_copied": "링크가 복사되었습니다"
+    "share_copied": "링크가 복사되었습니다",
+    "announced": "발표됨!"
   },
   "comments": {
     "title": "댓글",
@@ -79,7 +82,9 @@
     "load_more": "댓글 더 보기",
     "load_more_replies": "답글 더 보기",
     "empty": "아직 댓글이 없습니다. 첫 댓글을 남겨보세요!",
-    "error": "댓글을 게시할 수 없습니다. 다시 시도해 주세요."
+    "error": "댓글을 게시할 수 없습니다. 다시 시도해 주세요.",
+    "like": "좋아요",
+    "unlike": "좋아요 취소"
   },
   "footer": {
     "rights": "모든 권리 보유."

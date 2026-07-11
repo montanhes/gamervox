@@ -8,18 +8,20 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 use App\Models\Game;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Validation\ValidationException;
 
 class CommentController extends Controller
 {
-    public function index(string $slug): AnonymousResourceCollection
+    public function index(Request $request, string $slug): AnonymousResourceCollection
     {
         $game = Game::where('slug', $slug)->where('status', GameStatus::Approved)->firstOrFail();
 
         $comments = $game->comments()
             ->whereNull('parent_id')
             ->withCount('replies')
+            ->withExists(['likes as liked_by_me' => fn ($query) => $query->where('user_id', $request->user('sanctum')?->id ?? 0)])
             ->with('user')
             ->orderByDesc('created_at')
             ->cursorPaginate(20);
@@ -27,7 +29,7 @@ class CommentController extends Controller
         return CommentResource::collection($comments);
     }
 
-    public function replies(string $slug, Comment $comment): AnonymousResourceCollection
+    public function replies(Request $request, string $slug, Comment $comment): AnonymousResourceCollection
     {
         $game = Game::where('slug', $slug)->where('status', GameStatus::Approved)->firstOrFail();
 
@@ -35,6 +37,7 @@ class CommentController extends Controller
 
         $replies = $comment->replies()
             ->withCount('replies')
+            ->withExists(['likes as liked_by_me' => fn ($query) => $query->where('user_id', $request->user('sanctum')?->id ?? 0)])
             ->with('user')
             ->orderBy('created_at')
             ->cursorPaginate(10);

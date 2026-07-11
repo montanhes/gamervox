@@ -14,6 +14,7 @@ export interface Game {
   yes_votes_count: number
   no_votes_count: number
   net_score: number
+  is_announced: boolean
   tags: Tag[]
 }
 

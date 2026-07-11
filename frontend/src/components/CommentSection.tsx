@@ -2,8 +2,9 @@ import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { isAxiosError } from 'axios'
+import { Heart } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
-import { type Comment, fetchComments, fetchReplies, postComment } from '@/api/comments'
+import { type Comment, fetchComments, fetchReplies, postComment, toggleCommentLike } from '@/api/comments'
 import { useAuth } from '@/hooks/useAuth'
 
 function relativeTime(dateStr: string): string {
@@ -143,6 +144,55 @@ interface CommentItemProps {
   slug: string
 }
 
+function LikeButton({ comment }: { comment: Comment }) {
+  const { t } = useTranslation()
+  const { user } = useAuth()
+  const [liked, setLiked] = useState(comment.liked_by_me)
+  const [likes, setLikes] = useState(comment.likes_count)
+
+  const mutation = useMutation({
+    mutationFn: () => toggleCommentLike(comment.id),
+    onMutate: () => {
+      // Otimista: inverte já; rollback no erro.
+      setLiked((v) => !v)
+      setLikes((n) => n + (liked ? -1 : 1))
+    },
+    onSuccess: (result) => {
+      setLiked(result.liked)
+      setLikes(result.likes_count)
+    },
+    onError: () => {
+      setLiked(comment.liked_by_me)
+      setLikes(comment.likes_count)
+    },
+  })
+
+  if (!user) {
+    return likes > 0 ? (
+      <span className="inline-flex items-center gap-1">
+        <Heart size={13} aria-hidden="true" />
+        {likes}
+      </span>
+    ) : null
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => mutation.mutate()}
+      disabled={mutation.isPending}
+      aria-label={liked ? t('comments.unlike') : t('comments.like')}
+      aria-pressed={liked}
+      className={`inline-flex items-center gap-1 transition-colors ${
+        liked ? 'text-primary' : 'hover:text-foreground'
+      }`}
+    >
+      <Heart size={13} fill={liked ? 'currentColor' : 'none'} aria-hidden="true" />
+      {likes > 0 && likes}
+    </button>
+  )
+}
+
 function CommentItem({ comment, slug }: CommentItemProps) {
   const { t } = useTranslation()
   const { user } = useAuth()
@@ -168,6 +218,7 @@ function CommentItem({ comment, slug }: CommentItemProps) {
         <p className="mt-1 text-sm leading-relaxed text-foreground">{comment.body}</p>
 
         <div className="mt-2 flex items-center gap-4 text-xs text-muted-foreground">
+          <LikeButton comment={comment} />
           {user && (
             <button
               onClick={() => setShowReplyForm((v) => !v)}

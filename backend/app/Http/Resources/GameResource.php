@@ -23,6 +23,7 @@ class GameResource extends JsonResource
             'yes_votes_count' => $this->yes_votes_count,
             'no_votes_count' => $this->no_votes_count,
             'net_score' => $this->net_score,
+            'is_announced' => $this->announced_at !== null,
             'tags' => TagResource::collection($this->whenLoaded('tags')),
         ];
     }
