@@ -3,6 +3,7 @@ import { api } from '@/lib/api'
 export interface User {
   id: number
   name: string
+  username: string
   email: string
   avatar_url: string | null
   is_admin: boolean
@@ -44,8 +45,12 @@ export async function logout(): Promise<void> {
   await api.post('/api/logout')
 }
 
-export async function updateProfile(name: string, locale: string): Promise<User> {
-  const { data } = await api.patch<{ data: User }>('/api/me', { name, locale })
+export async function updateProfile(payload: {
+  name: string
+  locale: string
+  username?: string
+}): Promise<User> {
+  const { data } = await api.patch<{ data: User }>('/api/me', payload)
   return data.data
 }
 

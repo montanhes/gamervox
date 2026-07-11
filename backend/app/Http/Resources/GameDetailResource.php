@@ -34,7 +34,7 @@ class GameDetailResource extends JsonResource
                 'platform' => $link->platform,
                 'url' => $link->url,
             ])),
-            'user' => new UserResource($this->whenLoaded('user')),
+            'user' => new PublicUserResource($this->whenLoaded('user')),
             'status' => $this->when($canSeeStatus, $this->status?->label()),
             'moderation_reason' => $this->when($canSeeStatus, $this->moderation_reason),
         ];

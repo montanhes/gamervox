@@ -30,7 +30,9 @@
     "name_label": "Nombre",
     "language_label": "Idioma del sitio",
     "save": "Guardar cambios",
-    "saved": "Perfil actualizado."
+    "saved": "Perfil actualizado.",
+    "username_label": "Nombre de usuario",
+    "username_hint": "Letras, números, guion y guion bajo. Tu perfil público: /u/tu-nombre"
   },
   "vote": {
     "yes": "Sí",

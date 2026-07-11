@@ -21,10 +21,18 @@ class UpdateProfileRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
+    protected function prepareForValidation(): void
+    {
+        if ($this->filled('username')) {
+            $this->merge(['username' => mb_strtolower($this->string('username')->trim()->toString())]);
+        }
+    }
+
     public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:120'],
+            'username' => ['sometimes', 'string', 'min:3', 'max:30', 'alpha_dash', Rule::unique('users', 'username')->ignore($this->user()->id)],
             'locale' => ['sometimes', 'string', Rule::in(array_keys(config('locales.supported')))],
         ];
     }

@@ -23,7 +23,7 @@ export interface GameDetail extends Game {
   followers_count: number
   followed_by_me: boolean
   social_links: { platform: string; url: string }[]
-  user: { id: number; name: string; email: string; avatar_url: string | null; is_admin: boolean }
+  user: { id: number; name: string; username: string; avatar_url: string | null }
   status?: 'pending' | 'approved' | 'rejected'
   moderation_reason?: string | null
 }
@@ -135,6 +135,7 @@ export async function fetchFollowing(cursor?: string): Promise<GamesPage> {
 export interface UserProfile {
   id: number
   name: string
+  username: string
   avatar_url: string | null
   created_at: string
   stats: { games_count: number; votes_count: number }
@@ -142,7 +143,7 @@ export interface UserProfile {
   games: Game[]
 }
 
-export async function fetchUserProfile(id: number): Promise<UserProfile> {
-  const { data } = await api.get<{ data: UserProfile }>(`/api/users/${id}`)
+export async function fetchUserProfile(username: string): Promise<UserProfile> {
+  const { data } = await api.get<{ data: UserProfile }>(`/api/users/${username}`)
   return data.data
 }

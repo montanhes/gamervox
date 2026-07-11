@@ -30,7 +30,9 @@
     "name_label": "Name",
     "language_label": "Seitensprache",
     "save": "Änderungen speichern",
-    "saved": "Profil aktualisiert."
+    "saved": "Profil aktualisiert.",
+    "username_label": "Benutzername",
+    "username_hint": "Buchstaben, Zahlen, Bindestrich und Unterstrich. Dein öffentliches Profil: /u/dein-name"
   },
   "vote": {
     "yes": "Ja",

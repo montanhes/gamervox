@@ -98,7 +98,7 @@ export function GameDetailPage() {
             <p className="text-sm text-muted-foreground">
               {t('game.by')}{' '}
               <Link
-                to={`/users/${game.user.id}`}
+                to={`/u/${game.user.username}`}
                 className="font-medium text-foreground transition-colors hover:text-primary"
               >
                 {game.user.name}

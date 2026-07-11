@@ -30,7 +30,9 @@
     "name_label": "姓名",
     "language_label": "网站语言",
     "save": "保存更改",
-    "saved": "个人资料已更新。"
+    "saved": "个人资料已更新。",
+    "username_label": "用户名",
+    "username_hint": "字母、数字、连字符和下划线。你的公开主页：/u/your-name"
   },
   "vote": {
     "yes": "是",

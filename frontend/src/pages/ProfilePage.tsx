@@ -44,6 +44,7 @@ function ProfileForm({ user }: { user: User }) {
   const { updateProfile, isUpdatingProfile } = useAuth()
 
   const [name, setName] = useState(user.name)
+  const [username, setUsername] = useState(user.username)
   const [error, setError] = useState<string | null>(null)
   const [saved, setSaved] = useState(false)
 
@@ -53,11 +54,14 @@ function ProfileForm({ user }: { user: User }) {
     setSaved(false)
 
     try {
-      await updateProfile({ name, locale: i18n.resolvedLanguage ?? i18n.language })
+      await updateProfile({ name, username, locale: i18n.resolvedLanguage ?? i18n.language })
       setSaved(true)
     } catch (err) {
-      if (isAxiosError(err) && err.response?.data?.errors?.name?.[0]) {
-        setError(err.response.data.errors.name[0])
+      const errors = isAxiosError(err) ? err.response?.data?.errors : null
+      if (errors?.username?.[0]) {
+        setError(errors.username[0])
+      } else if (errors?.name?.[0]) {
+        setError(errors.name[0])
       } else {
         setError(t('comments.error'))
       }
@@ -92,6 +96,27 @@ function ProfileForm({ user }: { user: User }) {
             required
             className="w-full rounded-control border border-border-strong bg-background px-3 py-2 text-sm text-foreground transition-colors focus-visible:border-primary focus-visible:outline-none"
           />
+        </div>
+
+        <div className="space-y-1.5">
+          <label htmlFor="username" className="text-sm font-medium">
+            {t('profile.username_label')}
+          </label>
+          <div className="flex items-center overflow-hidden rounded-control border border-border-strong bg-background transition-colors focus-within:border-primary">
+            <span className="pl-3 text-sm text-muted-foreground">@</span>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              minLength={3}
+              maxLength={30}
+              pattern="[A-Za-z0-9_-]+"
+              className="w-full bg-transparent px-1.5 py-2 text-sm text-foreground focus:outline-none"
+            />
+          </div>
+          <p className="text-xs text-muted-foreground">{t('profile.username_hint')}</p>
         </div>
 
         {error && <p className="text-sm text-destructive">{error}</p>}

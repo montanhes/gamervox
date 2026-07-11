@@ -8,7 +8,7 @@ export interface Comment {
   replies_count: number
   likes_count: number
   liked_by_me: boolean
-  user: { id: number; name: string; avatar_url: string | null }
+  user: { id: number; name: string; username: string; avatar_url: string | null }
 }
 
 export interface CommentsPage {

@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\UpdateProfileRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Services\UsernameService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,12 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function register(RegisterRequest $request): UserResource
+    public function register(RegisterRequest $request, UsernameService $usernameService): UserResource
     {
-        $user = User::create($request->validated());
+        $data = $request->validated();
+        $data['username'] ??= $usernameService->generate($data['name']);
+
+        $user = User::create($data);
 
         Auth::login($user);
 

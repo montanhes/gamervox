@@ -22,7 +22,7 @@ class CommentResource extends JsonResource
             'replies_count' => $this->replies_count ?? 0,
             'likes_count' => $this->likes_count ?? 0,
             'liked_by_me' => (bool) ($this->liked_by_me ?? false),
-            'user' => new UserResource($this->whenLoaded('user')),
+            'user' => new PublicUserResource($this->whenLoaded('user')),
         ];
     }
 }

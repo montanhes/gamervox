@@ -21,10 +21,18 @@ class RegisterRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
+    protected function prepareForValidation(): void
+    {
+        if ($this->filled('username')) {
+            $this->merge(['username' => mb_strtolower($this->string('username')->trim()->toString())]);
+        }
+    }
+
     public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:120'],
+            'username' => ['sometimes', 'string', 'min:3', 'max:30', 'alpha_dash', 'unique:users,username'],
             'email' => ['required', 'email', 'max:190', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'locale' => ['sometimes', 'string', Rule::in(array_keys(config('locales.supported')))],

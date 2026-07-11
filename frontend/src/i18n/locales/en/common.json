@@ -30,7 +30,9 @@
     "name_label": "Name",
     "language_label": "Site language",
     "save": "Save changes",
-    "saved": "Profile updated."
+    "saved": "Profile updated.",
+    "username_label": "Username",
+    "username_hint": "Letters, numbers, hyphen and underscore. Your public profile: /u/your-name"
   },
   "vote": {
     "yes": "Yes",

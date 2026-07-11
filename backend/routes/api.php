@@ -21,7 +21,7 @@ Route::get('/games/{slug}', [GameController::class, 'show']);
 Route::get('/games/{slug}/comments', [CommentController::class, 'index']);
 Route::get('/games/{slug}/comments/{comment}/replies', [CommentController::class, 'replies']);
 Route::get('/tags', [TagController::class, 'index']);
-Route::get('/users/{user}', [UserProfileController::class, 'show']);
+Route::get('/users/{user:username}', [UserProfileController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);

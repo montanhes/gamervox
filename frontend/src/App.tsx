@@ -271,7 +271,7 @@ function App() {
           <Route path="/games/:slug" element={<GameDetailPage />} />
           <Route path="/me/games" element={<MyGamesPage />} />
           <Route path="/me/following" element={<FollowingPage />} />
-          <Route path="/users/:id" element={<PublicProfilePage />} />
+          <Route path="/u/:username" element={<PublicProfilePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/auth/callback" element={<AuthCallbackPage />} />

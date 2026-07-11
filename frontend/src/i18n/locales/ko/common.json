@@ -30,7 +30,9 @@
     "name_label": "이름",
     "language_label": "사이트 언어",
     "save": "변경 사항 저장",
-    "saved": "프로필이 업데이트되었습니다."
+    "saved": "프로필이 업데이트되었습니다.",
+    "username_label": "사용자 이름",
+    "username_hint": "영문, 숫자, 하이픈, 언더스코어. 공개 프로필: /u/your-name"
   },
   "vote": {
     "yes": "예",

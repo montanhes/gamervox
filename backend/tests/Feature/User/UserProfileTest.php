@@ -18,7 +18,7 @@ class UserProfileTest extends TestCase
         Game::factory()->count(2)->for($user)->create(['status' => GameStatus::Approved]);
         Game::factory()->for($user)->create(['status' => GameStatus::Pending]);
 
-        $response = $this->getJson("/api/users/{$user->id}");
+        $response = $this->getJson("/api/users/{$user->username}");
 
         $response->assertOk();
         $response->assertJsonPath('data.name', $user->name);
@@ -30,7 +30,7 @@ class UserProfileTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->getJson("/api/users/{$user->id}");
+        $response = $this->getJson("/api/users/{$user->username}");
 
         $response->assertOk();
         $this->assertArrayNotHasKey('email', $response->json('data'));
@@ -42,7 +42,7 @@ class UserProfileTest extends TestCase
         Game::factory()->count(5)->for($user)->create(['status' => GameStatus::Approved]);
         Game::factory()->for($user)->create(['status' => GameStatus::Approved, 'net_score' => 60]);
 
-        $response = $this->getJson("/api/users/{$user->id}");
+        $response = $this->getJson("/api/users/{$user->username}");
 
         $response->assertOk();
         $badges = $response->json('data.badges');

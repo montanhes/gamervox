@@ -30,7 +30,9 @@
     "name_label": "Nom",
     "language_label": "Langue du site",
     "save": "Enregistrer les modifications",
-    "saved": "Profil mis à jour."
+    "saved": "Profil mis à jour.",
+    "username_label": "Nom d'utilisateur",
+    "username_hint": "Lettres, chiffres, tiret et underscore. Votre profil public : /u/votre-nom"
   },
   "vote": {
     "yes": "Oui",

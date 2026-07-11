@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\SocialAccount;
 use App\Models\User;
+use App\Services\UsernameService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -58,8 +59,11 @@ class SocialAuthController extends Controller
             : null;
 
         if (! $user) {
+            $name = $socialUser->getName() ?: $socialUser->getNickname();
+
             $user = User::create([
-                'name' => $socialUser->getName() ?: $socialUser->getNickname(),
+                'name' => $name,
+                'username' => app(UsernameService::class)->generate($name ?? 'player'),
                 'email' => $socialUser->getEmail() ?: Str::uuid().'@steam.gamervox.local',
                 'avatar_url' => $socialUser->getAvatar(),
             ]);

@@ -14,12 +14,12 @@ const BADGE_ICONS: Record<string, typeof Award> = {
 
 export function PublicProfilePage() {
   const { t, i18n } = useTranslation()
-  const { id } = useParams<{ id: string }>()
+  const { username } = useParams<{ username: string }>()
 
   const { data: profile, isLoading } = useQuery({
-    queryKey: ['user-profile', id],
-    queryFn: () => fetchUserProfile(Number(id)),
-    enabled: !!id,
+    queryKey: ['user-profile', username],
+    queryFn: () => fetchUserProfile(username!),
+    enabled: !!username,
   })
 
   if (isLoading) return <p className="p-6 text-muted-foreground">{t('game.loading')}</p>
@@ -52,6 +52,7 @@ export function PublicProfilePage() {
 
         <div>
           <h1 className="text-3xl font-bold tracking-tight">{profile.name}</h1>
+          <p className="text-sm text-muted-foreground">@{profile.username}</p>
           <p className="mt-1 text-sm text-muted-foreground">
             {t('profile_public.member_since', { date: memberSince })}
           </p>

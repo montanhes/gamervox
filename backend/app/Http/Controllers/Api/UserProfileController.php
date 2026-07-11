@@ -40,6 +40,7 @@ class UserProfileController extends Controller
             'data' => [
                 'id' => $user->id,
                 'name' => $user->name,
+                'username' => $user->username,
                 'avatar_url' => $user->avatar_url,
                 'created_at' => $user->created_at,
                 'stats' => [
