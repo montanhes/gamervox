@@ -78,7 +78,10 @@ class GameController extends Controller
 
     public function show(Request $request, string $slug): GameDetailResource
     {
-        $game = Game::where('slug', $slug)->with(['tags', 'socialLinks', 'user'])->firstOrFail();
+        $game = Game::where('slug', $slug)
+            ->with(['tags', 'socialLinks', 'user'])
+            ->withExists(['followers as followed_by_me' => fn ($query) => $query->where('user_id', $request->user('sanctum')?->id ?? 0)])
+            ->firstOrFail();
 
         if ($game->status !== GameStatus::Approved && $game->user_id !== $request->user()?->id) {
             throw new NotFoundHttpException;

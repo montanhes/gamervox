@@ -21,7 +21,8 @@
     "my_games": "My submissions",
     "profile": "Profile",
     "login": "Log in",
-    "logout": "Log out"
+    "logout": "Log out",
+    "following": "Following"
   },
   "profile": {
     "title": "Profile",
@@ -71,7 +72,10 @@
     "read_less": "Read less",
     "share": "Copy link",
     "share_copied": "Link copied",
-    "announced": "Announced!"
+    "announced": "Announced!",
+    "follow": "Follow game",
+    "following": "Following",
+    "following_empty": "You aren't following any games yet. Follow one to track its campaign!"
   },
   "comments": {
     "title": "Comments",
@@ -110,5 +114,20 @@
     "remove": "Remove",
     "submitting": "Submitting...",
     "cancel": "Cancel"
+  },
+  "profile_public": {
+    "member_since": "Member since {{date}}",
+    "games": "games",
+    "votes": "votes",
+    "games_title": "Submitted games",
+    "games_empty": "No approved games yet.",
+    "badge_pioneer": "Pioneer",
+    "badge_pioneer_desc": "One of the first 100 community members",
+    "badge_collector": "Collector",
+    "badge_collector_desc": "Submitted 5 or more approved games",
+    "badge_curator": "Curator",
+    "badge_curator_desc": "Submitted a game with a 50+ vote balance",
+    "badge_active_voice": "Active voice",
+    "badge_active_voice_desc": "Voted on 100 or more games"
   }
 }

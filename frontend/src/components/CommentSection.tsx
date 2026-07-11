@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { isAxiosError } from 'axios'
 import { Heart } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { useInView } from 'react-intersection-observer'
 import { type Comment, fetchComments, fetchReplies, postComment, toggleCommentLike } from '@/api/comments'
 import { useAuth } from '@/hooks/useAuth'
@@ -210,7 +211,12 @@ function CommentItem({ comment, slug }: CommentItemProps) {
 
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <span className="font-semibold text-foreground">{comment.user.name}</span>
+          <Link
+            to={`/users/${comment.user.id}`}
+            className="font-semibold text-foreground transition-colors hover:text-primary"
+          >
+            {comment.user.name}
+          </Link>
           <span>·</span>
           <time dateTime={comment.created_at}>{relativeTime(comment.created_at)}</time>
         </div>

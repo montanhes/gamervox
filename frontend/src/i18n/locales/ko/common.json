@@ -21,7 +21,8 @@
     "my_games": "내가 등록한 게임",
     "profile": "프로필",
     "login": "로그인",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "following": "팔로잉"
   },
   "profile": {
     "title": "프로필",
@@ -71,7 +72,10 @@
     "read_less": "간략히 보기",
     "share": "링크 복사",
     "share_copied": "링크가 복사되었습니다",
-    "announced": "발표됨!"
+    "announced": "발표됨!",
+    "follow": "게임 팔로우",
+    "following": "팔로잉",
+    "following_empty": "아직 팔로우한 게임이 없습니다. 팔로우하고 캠페인을 지켜보세요!"
   },
   "comments": {
     "title": "댓글",
@@ -110,5 +114,20 @@
     "remove": "삭제",
     "submitting": "제출 중...",
     "cancel": "취소"
+  },
+  "profile_public": {
+    "member_since": "{{date}}부터 회원",
+    "games": "게임",
+    "votes": "투표",
+    "games_title": "등록한 게임",
+    "games_empty": "승인된 게임이 아직 없습니다.",
+    "badge_pioneer": "개척자",
+    "badge_pioneer_desc": "커뮤니티 최초 100명의 회원",
+    "badge_collector": "수집가",
+    "badge_collector_desc": "승인된 게임 5개 이상 등록",
+    "badge_curator": "큐레이터",
+    "badge_curator_desc": "50표 이상 균형의 게임 등록",
+    "badge_active_voice": "활발한 목소리",
+    "badge_active_voice_desc": "100개 이상의 게임에 투표"
   }
 }

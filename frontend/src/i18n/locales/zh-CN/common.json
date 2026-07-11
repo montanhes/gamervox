@@ -21,7 +21,8 @@
     "my_games": "我的提交",
     "profile": "个人资料",
     "login": "登录",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "following": "关注中"
   },
   "profile": {
     "title": "个人资料",
@@ -71,7 +72,10 @@
     "read_less": "收起",
     "share": "复制链接",
     "share_copied": "链接已复制",
-    "announced": "已公布！"
+    "announced": "已公布！",
+    "follow": "关注游戏",
+    "following": "已关注",
+    "following_empty": "你还没有关注任何游戏。关注一个来追踪它的进展吧！"
   },
   "comments": {
     "title": "评论",
@@ -110,5 +114,20 @@
     "remove": "删除",
     "submitting": "提交中...",
     "cancel": "取消"
+  },
+  "profile_public": {
+    "member_since": "{{date}}加入",
+    "games": "游戏",
+    "votes": "投票",
+    "games_title": "发布的游戏",
+    "games_empty": "还没有已批准的游戏。",
+    "badge_pioneer": "先锋",
+    "badge_pioneer_desc": "社区最早的100名成员之一",
+    "badge_collector": "收藏家",
+    "badge_collector_desc": "发布了5个及以上已批准的游戏",
+    "badge_curator": "策展人",
+    "badge_curator_desc": "发布了票数差50+的游戏",
+    "badge_active_voice": "活跃之声",
+    "badge_active_voice_desc": "为100个及以上游戏投票"
   }
 }

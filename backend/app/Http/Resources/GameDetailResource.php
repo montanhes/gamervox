@@ -27,6 +27,8 @@ class GameDetailResource extends JsonResource
             'no_votes_count' => $this->no_votes_count,
             'net_score' => $this->net_score,
             'is_announced' => $this->announced_at !== null,
+            'followers_count' => $this->followers_count,
+            'followed_by_me' => (bool) ($this->followed_by_me ?? false),
             'tags' => TagResource::collection($this->whenLoaded('tags')),
             'social_links' => $this->whenLoaded('socialLinks', fn () => $this->socialLinks->map(fn ($link) => [
                 'platform' => $link->platform,

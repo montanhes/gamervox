@@ -21,7 +21,8 @@
     "my_games": "Mis envíos",
     "profile": "Perfil",
     "login": "Iniciar sesión",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "following": "Siguiendo"
   },
   "profile": {
     "title": "Perfil",
@@ -71,7 +72,10 @@
     "read_less": "Leer menos",
     "share": "Copiar enlace",
     "share_copied": "Enlace copiado",
-    "announced": "¡Anunciado!"
+    "announced": "¡Anunciado!",
+    "follow": "Seguir juego",
+    "following": "Siguiendo",
+    "following_empty": "Aún no sigues ningún juego. ¡Sigue uno para acompañar su campaña!"
   },
   "comments": {
     "title": "Comentarios",
@@ -110,5 +114,20 @@
     "remove": "Eliminar",
     "submitting": "Enviando...",
     "cancel": "Cancelar"
+  },
+  "profile_public": {
+    "member_since": "Miembro desde {{date}}",
+    "games": "juegos",
+    "votes": "votos",
+    "games_title": "Juegos publicados",
+    "games_empty": "Ningún juego aprobado todavía.",
+    "badge_pioneer": "Pionero",
+    "badge_pioneer_desc": "Uno de los primeros 100 miembros de la comunidad",
+    "badge_collector": "Coleccionista",
+    "badge_collector_desc": "Publicó 5 o más juegos aprobados",
+    "badge_curator": "Curador",
+    "badge_curator_desc": "Publicó un juego con saldo de 50+ votos",
+    "badge_active_voice": "Voz activa",
+    "badge_active_voice_desc": "Votó en 100 o más juegos"
   }
 }

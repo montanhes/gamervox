@@ -21,7 +21,8 @@
     "my_games": "Мои заявки",
     "profile": "Профиль",
     "login": "Войти",
-    "logout": "Выйти"
+    "logout": "Выйти",
+    "following": "Подписки"
   },
   "profile": {
     "title": "Профиль",
@@ -71,7 +72,10 @@
     "read_less": "Свернуть",
     "share": "Скопировать ссылку",
     "share_copied": "Ссылка скопирована",
-    "announced": "Анонсировано!"
+    "announced": "Анонсировано!",
+    "follow": "Следить за игрой",
+    "following": "Отслеживается",
+    "following_empty": "Вы пока не следите ни за одной игрой. Подпишитесь, чтобы следить за кампанией!"
   },
   "comments": {
     "title": "Комментарии",
@@ -110,5 +114,20 @@
     "remove": "Удалить",
     "submitting": "Отправка...",
     "cancel": "Отмена"
+  },
+  "profile_public": {
+    "member_since": "Участник с {{date}}",
+    "games": "игр",
+    "votes": "голосов",
+    "games_title": "Добавленные игры",
+    "games_empty": "Пока нет одобренных игр.",
+    "badge_pioneer": "Первопроходец",
+    "badge_pioneer_desc": "Один из первых 100 участников сообщества",
+    "badge_collector": "Коллекционер",
+    "badge_collector_desc": "Добавил 5 и более одобренных игр",
+    "badge_curator": "Куратор",
+    "badge_curator_desc": "Добавил игру с балансом 50+ голосов",
+    "badge_active_voice": "Активный голос",
+    "badge_active_voice_desc": "Проголосовал за 100 и более игр"
   }
 }

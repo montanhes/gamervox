@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
-import { Check, PartyPopper, Share2 } from 'lucide-react'
-import { fetchGame } from '@/api/games'
+import { Bell, BellRing, Check, PartyPopper, Share2 } from 'lucide-react'
+import { fetchGame, toggleFollow } from '@/api/games'
+import { api } from '@/lib/api'
+import { useAuth } from '@/hooks/useAuth'
 import { VoteButtons } from '@/components/VoteButtons'
 import { CommentSection } from '@/components/CommentSection'
 import { getSocialPlatform } from '@/lib/socialPlatforms'
@@ -12,7 +14,10 @@ import { XIcon } from '@/components/SocialIcons'
 export function GameDetailPage() {
   const { t } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
+  const { user } = useAuth()
   const [copied, setCopied] = useState(false)
+  // null = sem interação; senão, override otimista sobre o valor do servidor.
+  const [followOverride, setFollowOverride] = useState<boolean | null>(null)
 
   const { data: game, isLoading } = useQuery({
     queryKey: ['game', slug],
@@ -20,8 +25,21 @@ export function GameDetailPage() {
     enabled: !!slug,
   })
 
+  const following = followOverride ?? game?.followed_by_me ?? false
+
+  const followMutation = useMutation({
+    mutationFn: () => toggleFollow(slug!),
+    onMutate: () => setFollowOverride(!following),
+    onSuccess: (result) => setFollowOverride(result.following),
+    onError: () => setFollowOverride(null),
+  })
+
   if (isLoading) return <p className="p-6 text-muted-foreground">{t('game.loading')}</p>
   if (!game) return null
+
+  // Crawlers de redes sociais leem as OG tags dessa rota do backend;
+  // humanos são redirecionados de volta pro SPA.
+  const shareUrl = `${api.defaults.baseURL}/share/games/${game.slug}`
 
   function handleShare() {
     navigator.clipboard.writeText(window.location.href)
@@ -78,7 +96,13 @@ export function GameDetailPage() {
             </div>
 
             <p className="text-sm text-muted-foreground">
-              {t('game.by')} <span className="font-medium text-foreground">{game.user.name}</span>
+              {t('game.by')}{' '}
+              <Link
+                to={`/users/${game.user.id}`}
+                className="font-medium text-foreground transition-colors hover:text-primary"
+              >
+                {game.user.name}
+              </Link>
             </p>
 
             <div className="max-w-sm">
@@ -101,7 +125,7 @@ export function GameDetailPage() {
                     <a
                       href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                         t('vote.share_text', { title: game.title }),
-                      )}&url=${encodeURIComponent(window.location.href)}`}
+                      )}&url=${encodeURIComponent(shareUrl)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={t('vote.share_vote')}
@@ -114,6 +138,23 @@ export function GameDetailPage() {
                 }
               />
             </div>
+
+            {user && (
+              <button
+                type="button"
+                onClick={() => followMutation.mutate()}
+                disabled={followMutation.isPending}
+                aria-pressed={following}
+                className={`inline-flex w-fit items-center gap-2 rounded-control border px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 ${
+                  following
+                    ? 'border-primary bg-primary/10 text-primary'
+                    : 'border-border-strong text-muted-foreground hover:border-foreground hover:text-foreground'
+                }`}
+              >
+                {following ? <BellRing size={15} /> : <Bell size={15} />}
+                {following ? t('game.following') : t('game.follow')}
+              </button>
+            )}
 
             <p className="max-w-[65ch] leading-relaxed">{game.description}</p>
 

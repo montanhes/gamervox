@@ -18,6 +18,8 @@ import { LoginPage } from '@/pages/LoginPage'
 import { SubmitGamePage } from '@/pages/SubmitGamePage'
 import { GameDetailPage } from '@/pages/GameDetailPage'
 import { MyGamesPage } from '@/pages/MyGamesPage'
+import { FollowingPage } from '@/pages/FollowingPage'
+import { PublicProfilePage } from '@/pages/PublicProfilePage'
 import { GameCard } from '@/components/GameCard'
 import { SearchBar } from '@/components/SearchBar'
 import { UserMenu } from '@/components/UserMenu'
@@ -45,6 +47,9 @@ function Header() {
               </Link>
               <Link to="/me/games" className="text-muted-foreground transition-colors hover:text-foreground">
                 {t('nav.my_games')}
+              </Link>
+              <Link to="/me/following" className="text-muted-foreground transition-colors hover:text-foreground">
+                {t('nav.following')}
               </Link>
               <UserMenu user={user} onLogout={() => logout()} />
             </>
@@ -265,6 +270,8 @@ function App() {
           <Route path="/games/new" element={<SubmitGamePage />} />
           <Route path="/games/:slug" element={<GameDetailPage />} />
           <Route path="/me/games" element={<MyGamesPage />} />
+          <Route path="/me/following" element={<FollowingPage />} />
+          <Route path="/users/:id" element={<PublicProfilePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/auth/callback" element={<AuthCallbackPage />} />

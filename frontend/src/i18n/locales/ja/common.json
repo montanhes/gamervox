@@ -21,7 +21,8 @@
     "my_games": "投稿したゲーム",
     "profile": "プロフィール",
     "login": "ログイン",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "following": "フォロー中"
   },
   "profile": {
     "title": "プロフィール",
@@ -71,7 +72,10 @@
     "read_less": "閉じる",
     "share": "リンクをコピー",
     "share_copied": "リンクをコピーしました",
-    "announced": "発表済み！"
+    "announced": "発表済み！",
+    "follow": "フォローする",
+    "following": "フォロー中",
+    "following_empty": "まだフォローしているゲームがありません。フォローしてキャンペーンを追いかけよう！"
   },
   "comments": {
     "title": "コメント",
@@ -110,5 +114,20 @@
     "remove": "削除",
     "submitting": "送信中...",
     "cancel": "キャンセル"
+  },
+  "profile_public": {
+    "member_since": "{{date}}からのメンバー",
+    "games": "ゲーム",
+    "votes": "投票",
+    "games_title": "投稿したゲーム",
+    "games_empty": "承認されたゲームはまだありません。",
+    "badge_pioneer": "パイオニア",
+    "badge_pioneer_desc": "コミュニティ最初の100人のメンバー",
+    "badge_collector": "コレクター",
+    "badge_collector_desc": "5本以上の承認ゲームを投稿",
+    "badge_curator": "キュレーター",
+    "badge_curator_desc": "50票以上の差があるゲームを投稿",
+    "badge_active_voice": "アクティブボイス",
+    "badge_active_voice_desc": "100本以上のゲームに投票"
   }
 }

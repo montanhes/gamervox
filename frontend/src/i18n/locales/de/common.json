@@ -21,7 +21,8 @@
     "my_games": "Meine Einreichungen",
     "profile": "Profil",
     "login": "Anmelden",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "following": "Folge ich"
   },
   "profile": {
     "title": "Profil",
@@ -71,7 +72,10 @@
     "read_less": "Weniger lesen",
     "share": "Link kopieren",
     "share_copied": "Link kopiert",
-    "announced": "Angekündigt!"
+    "announced": "Angekündigt!",
+    "follow": "Spiel folgen",
+    "following": "Folge ich",
+    "following_empty": "Du folgst noch keinem Spiel. Folge einem, um seine Kampagne zu verfolgen!"
   },
   "comments": {
     "title": "Kommentare",
@@ -110,5 +114,20 @@
     "remove": "Entfernen",
     "submitting": "Wird gesendet...",
     "cancel": "Abbrechen"
+  },
+  "profile_public": {
+    "member_since": "Mitglied seit {{date}}",
+    "games": "Spiele",
+    "votes": "Stimmen",
+    "games_title": "Eingereichte Spiele",
+    "games_empty": "Noch keine genehmigten Spiele.",
+    "badge_pioneer": "Pionier",
+    "badge_pioneer_desc": "Eines der ersten 100 Community-Mitglieder",
+    "badge_collector": "Sammler",
+    "badge_collector_desc": "5 oder mehr genehmigte Spiele eingereicht",
+    "badge_curator": "Kurator",
+    "badge_curator_desc": "Ein Spiel mit 50+ Stimmen-Saldo eingereicht",
+    "badge_active_voice": "Aktive Stimme",
+    "badge_active_voice_desc": "Bei 100 oder mehr Spielen abgestimmt"
   }
 }

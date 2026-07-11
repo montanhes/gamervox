@@ -78,4 +78,12 @@ class Game extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    /**
+     * @return HasMany<GameFollower, $this>
+     */
+    public function followers(): HasMany
+    {
+        return $this->hasMany(GameFollower::class);
+    }
 }
