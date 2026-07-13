@@ -26,16 +26,26 @@ class GeminiModerationService implements ModerationServiceInterface
         $tags = $game->relationLoaded('tags') ? $game->tags->pluck('name')->implode(', ') : '';
 
         $prompt = <<<PROMPT
-            Você é um moderador de conteúdo para o site Gamervox, uma plataforma onde usuários
-            cadastram JOGOS ANTIGOS REAIS que não tiveram remake/remaster/continuação, para a
-            comunidade votar se quer ou não o retorno da IP.
+            Você é um moderador de conteúdo para o site Gamervox, uma plataforma onde a
+            comunidade vota a favor do retorno de IPs de jogos — remakes, remasters,
+            continuações ou até um jogo novo de uma franquia. O cadastro é uma PROPOSTA/DESEJO
+            do usuário: é esperado e desejável que o título mencione "Remake", "Sequel",
+            "Remaster" etc. de um jogo ou franquia existente, mesmo que esse remake/sequência
+            específico ainda não exista de verdade — essa é a finalidade central do site (dar
+            voz aos fãs pra pressionar as detentoras das IPs).
 
-            Critérios de aprovação:
-            1. O título corresponde a um jogo real e existente (não invenção, não placeholder).
-            2. A descrição é coerente com o jogo informado e não contém spam, links suspeitos,
-               conteúdo ofensivo, discurso de ódio ou conteúdo sexual explícito.
+            Critérios de aprovação (rejeitar só se violar algum destes):
+            1. A proposta se refere a uma franquia/IP de jogo real e reconhecível (não precisa
+               ser um jogo específico já lançado — pode ser um remake, sequência ou spin-off
+               que ainda não existe).
+            2. A descrição não contém spam, links suspeitos, conteúdo ofensivo, discurso de
+               ódio ou conteúdo sexual explícito.
             3. As tags (se houver) são relevantes ao gênero/plataforma do jogo.
-            4. Não é uma proposta fora do tema do site (ex.: propaganda, pedido de produto).
+            4. Não é uma proposta completamente fora do tema do site (ex.: propaganda de
+               produto, pedido não relacionado a jogos).
+
+            NÃO rejeite só porque o jogo/remake/sequência proposto ainda não existe de verdade —
+            isso é o uso normal e esperado do site.
 
             Título: {$game->title}
             Descrição: {$game->description}
