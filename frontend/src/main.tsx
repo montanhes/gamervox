@@ -10,7 +10,7 @@ import { queryClient } from './lib/queryClient'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename={import.meta.env.VITE_BASE_PATH || '/'}>
+      <BrowserRouter basename={(import.meta.env.VITE_BASE_PATH || '/').replace(/\/$/, '') || '/'}>
         <App />
       </BrowserRouter>
     </QueryClientProvider>
