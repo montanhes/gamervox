@@ -15,7 +15,7 @@ use Throwable;
 
 class GeminiModerationService implements ModerationServiceInterface
 {
-    private const MODEL = 'gemini-2.0-flash';
+    private const MODEL = 'gemini-flash-latest';
 
     public function __construct(
         private readonly ClientContract $client,
