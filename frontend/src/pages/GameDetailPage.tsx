@@ -156,7 +156,7 @@ export function GameDetailPage() {
               </button>
             )}
 
-            <p className="max-w-[65ch] leading-relaxed">{game.description}</p>
+            <p className="max-w-[65ch] whitespace-pre-line leading-relaxed">{game.description}</p>
 
             {game.social_links.length > 0 && (
               <ul className="flex flex-wrap gap-2">
