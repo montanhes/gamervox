@@ -14,9 +14,9 @@ RUN npm run build
 
 FROM php:8.4-fpm-alpine
 
-RUN apk add --no-cache icu-libs libzip oniguruma libxml2 libpng libjpeg-turbo freetype gd ttf-dejavu nginx supervisor \
-    && apk add --no-cache --virtual .build-deps icu-dev oniguruma-dev libzip-dev libxml2-dev libpng-dev libjpeg-turbo-dev freetype-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+RUN apk add --no-cache icu-libs libzip oniguruma libxml2 libpng libjpeg-turbo freetype libwebp gd ttf-dejavu nginx supervisor \
+    && apk add --no-cache --virtual .build-deps icu-dev oniguruma-dev libzip-dev libxml2-dev libpng-dev libjpeg-turbo-dev freetype-dev libwebp-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install pdo_mysql mbstring intl zip bcmath xml gd opcache \
     && apk del .build-deps
 
