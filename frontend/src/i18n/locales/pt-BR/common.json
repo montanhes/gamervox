@@ -23,7 +23,8 @@
     "login": "Entrar",
     "logout": "Sair",
     "following": "Seguindo",
-    "cup": "Copa"
+    "cup": "Copa",
+    "admin": "Moderação"
   },
   "profile": {
     "title": "Perfil",
@@ -79,7 +80,9 @@
     "announced": "Anunciado!",
     "follow": "Seguir jogo",
     "following": "Seguindo",
-    "following_empty": "Você ainda não segue nenhum jogo. Siga um jogo pra acompanhar a campanha dele!"
+    "following_empty": "Você ainda não segue nenhum jogo. Siga um jogo pra acompanhar a campanha dele!",
+    "request_review": "Solicitar revisão manual",
+    "review_requested": "Revisão manual solicitada"
   },
   "comments": {
     "title": "Comentários",
@@ -141,6 +144,15 @@
     "game_approved": "Seu jogo \"{{title}}\" foi aprovado e está no ranking!",
     "game_rejected": "Seu jogo \"{{title}}\" foi rejeitado pela moderação.",
     "milestone": "\"{{title}}\" alcançou {{milestone}} votos de saldo!"
+  },
+  "admin": {
+    "moderation_title": "Moderação de jogos",
+    "moderation_empty": "Nenhum jogo aguardando moderação.",
+    "manual_review_badge": "Revisão solicitada",
+    "previous_reason": "Motivo anterior",
+    "reason_placeholder": "Motivo (opcional)",
+    "approve": "Aprovar",
+    "reject": "Rejeitar"
   },
   "cup": {
     "title": "Copa dos Remakes",

@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/game-lookup/image', [GameLookupController::class, 'image'])->middleware('throttle:20,1');
     Route::get('/game-lookup/{id}', [GameLookupController::class, 'show'])->middleware('throttle:30,1');
     Route::post('/games/{slug}/vote', [VoteController::class, 'store']);
+    Route::post('/games/{slug}/request-review', [GameController::class, 'requestReview'])->middleware('throttle:5,1');
     Route::post('/games/{slug}/follow', [GameFollowController::class, 'toggle'])->middleware('throttle:60,1');
     Route::delete('/games/{slug}/vote', [VoteController::class, 'destroy']);
     Route::post('/games/{slug}/comments', [CommentController::class, 'store'])->middleware('throttle:20,1');
@@ -49,6 +50,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/cup/matches/{match}/vote', [CupController::class, 'vote'])->middleware('throttle:30,1');
 
     Route::middleware('admin')->prefix('admin')->group(function () {
+        Route::get('/games', [GameModerationController::class, 'index']);
         Route::patch('/games/{game}/moderate', [GameModerationController::class, 'update']);
     });
 });

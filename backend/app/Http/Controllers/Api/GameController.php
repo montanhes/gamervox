@@ -99,4 +99,19 @@ class GameController extends Controller
 
         return GameDetailResource::collection($games);
     }
+
+    public function requestReview(Request $request, string $slug): GameDetailResource
+    {
+        $game = Game::where('slug', $slug)
+            ->where('user_id', $request->user()->id)
+            ->firstOrFail();
+
+        abort_if($game->status !== GameStatus::Rejected, 422, 'Só é possível pedir revisão de jogos rejeitados.');
+
+        if ($game->manual_review_requested_at === null) {
+            $game->update(['manual_review_requested_at' => now()]);
+        }
+
+        return new GameDetailResource($game->load(['tags', 'socialLinks', 'user']));
+    }
 }

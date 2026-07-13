@@ -37,6 +37,7 @@ class GameDetailResource extends JsonResource
             'user' => new PublicUserResource($this->whenLoaded('user')),
             'status' => $this->when($canSeeStatus, $this->status?->label()),
             'moderation_reason' => $this->when($canSeeStatus, $this->moderation_reason),
+            'manual_review_requested' => $this->when($canSeeStatus, $this->manual_review_requested_at !== null),
         ];
     }
 }

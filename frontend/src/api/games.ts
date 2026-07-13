@@ -26,6 +26,7 @@ export interface GameDetail extends Game {
   user: { id: number; name: string; username: string; avatar_url: string | null }
   status?: 'pending' | 'approved' | 'rejected'
   moderation_reason?: string | null
+  manual_review_requested?: boolean
 }
 
 export interface GamesPage {
@@ -104,6 +105,39 @@ export async function removeVote(
 ): Promise<{ yes_votes_count: number; no_votes_count: number; net_score: number }> {
   const { data } = await api.delete(`/api/games/${slug}/vote`)
   return data
+}
+
+export async function requestGameReview(slug: string): Promise<GameDetail> {
+  const { data } = await api.post<{ data: GameDetail }>(`/api/games/${slug}/request-review`)
+  return data.data
+}
+
+export interface AdminGame {
+  id: number
+  slug: string
+  title: string
+  description: string
+  image_url: string | null
+  status: 'pending' | 'approved' | 'rejected'
+  moderation_reason: string | null
+  manual_review_requested: boolean
+  moderation_attempts: number
+  created_at: string
+  tags: Tag[]
+  user: { id: number; name: string; username: string; avatar_url: string | null }
+}
+
+export async function fetchAdminGames(): Promise<AdminGame[]> {
+  const { data } = await api.get<{ data: AdminGame[] }>('/api/admin/games')
+  return data.data
+}
+
+export async function moderateGameAdmin(
+  gameId: number,
+  payload: { status: 'approved' | 'rejected'; reason?: string },
+): Promise<AdminGame> {
+  const { data } = await api.patch<{ data: AdminGame }>(`/api/admin/games/${gameId}/moderate`, payload)
+  return data.data
 }
 
 export async function fetchTags(search?: string): Promise<Tag[]> {

@@ -60,7 +60,11 @@ npm run preview
 
 - Stack: Laravel + Sanctum + MariaDB + Sail no backend; React + TS + Vite + Tailwind no frontend — fixado no planejamento original.
 - Ranking por saldo líquido (yes − no), não bruto nem percentual.
-- Moderação 100% automatizada via Gemini no MVP, sem fila manual de admin.
+- Moderação primária automatizada via Gemini; dono de jogo rejeitado pode solicitar revisão manual
+  (`manual_review_requested_at` em `games`), que aparece num painel simples de admin (`/admin/moderation`,
+  rota `GET/PATCH /api/admin/games*`, atrás do middleware `admin`) pra aprovar/rejeitar. Critério do
+  prompt Gemini aceita propostas fictícias de remake/sequência/spin-off (não exige jogo já lançado) —
+  só rejeita conteúdo ofensivo/spam/fora do escopo do site.
 - Auth social (Google/Discord/Steam) coexiste com local (e-mail/senha).
 - i18n pt-BR + inglês desde o início, pt-BR é o padrão.
 

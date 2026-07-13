@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['user_id', 'title', 'slug', 'description', 'image_path', 'status', 'moderation_reason', 'announced_at'])]
+#[Fillable(['user_id', 'title', 'slug', 'description', 'image_path', 'status', 'moderation_reason', 'manual_review_requested_at', 'announced_at'])]
 class Game extends Model
 {
     /** @use HasFactory<GameFactory> */
@@ -33,6 +33,7 @@ class Game extends Model
         return [
             'status' => GameStatus::class,
             'announced_at' => 'datetime',
+            'manual_review_requested_at' => 'datetime',
             'yes_votes_count' => 'integer',
             'no_votes_count' => 'integer',
             'net_score' => 'integer',

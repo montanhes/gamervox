@@ -26,6 +26,7 @@ import { SearchBar } from '@/components/SearchBar'
 import { UserMenu } from '@/components/UserMenu'
 import { NotificationBell } from '@/components/NotificationBell'
 import { ProfilePage } from '@/pages/ProfilePage'
+import { AdminModerationPage } from '@/pages/AdminModerationPage'
 
 function Header() {
   const { t } = useTranslation()
@@ -56,6 +57,11 @@ function Header() {
               <Link to="/me/following" className="text-muted-foreground transition-colors hover:text-foreground">
                 {t('nav.following')}
               </Link>
+              {user.is_admin && (
+                <Link to="/admin/moderation" className="text-muted-foreground transition-colors hover:text-foreground">
+                  {t('nav.admin')}
+                </Link>
+              )}
               <NotificationBell />
               <UserMenu user={user} onLogout={() => logout()} />
             </>
@@ -280,6 +286,7 @@ function App() {
           <Route path="/cup" element={<CupPage />} />
           <Route path="/u/:username" element={<PublicProfilePage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/admin/moderation" element={<AdminModerationPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/auth/callback" element={<AuthCallbackPage />} />
         </Routes>

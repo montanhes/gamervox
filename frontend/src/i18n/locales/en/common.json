@@ -23,7 +23,8 @@
     "login": "Log in",
     "logout": "Log out",
     "following": "Following",
-    "cup": "Cup"
+    "cup": "Cup",
+    "admin": "Moderation"
   },
   "profile": {
     "title": "Profile",
@@ -79,7 +80,9 @@
     "announced": "Announced!",
     "follow": "Follow game",
     "following": "Following",
-    "following_empty": "You aren't following any games yet. Follow one to track its campaign!"
+    "following_empty": "You aren't following any games yet. Follow one to track its campaign!",
+    "request_review": "Request manual review",
+    "review_requested": "Manual review requested"
   },
   "comments": {
     "title": "Comments",
@@ -141,6 +144,15 @@
     "game_approved": "Your game \"{{title}}\" was approved and is on the ranking!",
     "game_rejected": "Your game \"{{title}}\" was rejected by moderation.",
     "milestone": "\"{{title}}\" reached a {{milestone}} vote balance!"
+  },
+  "admin": {
+    "moderation_title": "Game moderation",
+    "moderation_empty": "No games awaiting moderation.",
+    "manual_review_badge": "Review requested",
+    "previous_reason": "Previous reason",
+    "reason_placeholder": "Reason (optional)",
+    "approve": "Approve",
+    "reject": "Reject"
   },
   "cup": {
     "title": "Remake Cup",
